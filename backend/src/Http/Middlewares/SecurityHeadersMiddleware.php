@@ -30,6 +30,8 @@ final class SecurityHeadersMiddleware implements MiddlewareInterface
             ->withHeader('X-Frame-Options', 'DENY')
             ->withHeader('X-XSS-Protection', '1; mode=block')
             ->withHeader('Referrer-Policy', 'strict-origin-when-cross-origin')
+            ->withHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains')
+            ->withHeader('Access-Control-Expose-Headers', 'X-CSRF-Token')
             ->withHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none';");
     }
 }

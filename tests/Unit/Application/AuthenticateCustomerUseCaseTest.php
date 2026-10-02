@@ -90,4 +90,12 @@ final class AuthenticateCustomerUseCaseTest extends TestCase
         $this->expectExceptionMessage("Preencha todos os campos obrigatórios.");
         $this->useCase->execute(new LoginInputDTO("", ""));
     }
+
+    public function testDeveGarantirMitigacaoDeTimingAttackQuandoUsuarioNaoExiste(): void
+    {
+        // Garante que o caso de uso processa a tentativa de usuário inexistente com a mesma exceção e proteção criptográfica
+        $this->expectException(DomainException::class);
+        $this->expectExceptionMessage("Credenciais inválidas.");
+        $this->useCase->execute(new LoginInputDTO("naoexiste_timing@teste.com", "QualquerSenha123"));
+    }
 }

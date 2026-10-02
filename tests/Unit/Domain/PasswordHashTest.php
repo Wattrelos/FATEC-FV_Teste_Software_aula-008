@@ -36,4 +36,20 @@ final class PasswordHashTest extends TestCase
         $this->assertEquals($hashOriginal, $passwordHash->getHash());
         $this->assertTrue($passwordHash->verify("SenhaExistente"));
     }
+
+    public function testDeveRejeitarSenhaExcessivamenteLongaParaEvitarDos(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage("A senha excede o limite máximo permitido de 128 caracteres.");
+        new PasswordHash(str_repeat("A", 129));
+    }
+
+    public function testDeveRecusarVerificacaoDeSenhaMaiorQueLimiteSemGastarCpu(): void
+    {
+        $passwordHash = new PasswordHash("Senha@123");
+        $senhaGigante = str_repeat("X", 5000);
+
+        // Deve retornar false instantaneamente sem travar a CPU
+        $this->assertFalse($passwordHash->verify($senhaGigante));
+    }
 }

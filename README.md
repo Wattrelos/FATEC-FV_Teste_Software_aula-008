@@ -32,11 +32,13 @@ executar_testes.bat
 
 ### Execução Manual por Camada
 
-1. **Testes Unitários e de Integração (PHPUnit):**
+1. **Testes Unitários, de Integração e Auto-Cura (Pest / PHPUnit):**
    ```bash
    composer test:unit        # Apenas regras de domínio e casos de uso
-   composer test:integration # Pipeline HTTP, Middlewares, Rate Limiting e Sessão
-   composer test             # Todos os 23 testes automatizados de backend
+   composer test:integration # Pipeline HTTP, Middlewares, Rate Limiting, CSRF e Sessão
+   composer test             # Todos os 46 testes automatizados de backend (153 asserções)
+   composer self-healing     # Ciclo fechado completo: PSR-12 Auto-Fix -> PHPStan L5 -> Pest
+   composer stan             # Análise estática avançada com PHPStan Nível 5
    ```
 
 2. **Testes BDD & E2E com Playwright (Python Behave):**

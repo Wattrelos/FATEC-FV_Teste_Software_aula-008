@@ -53,6 +53,11 @@ final class CsrfMiddleware implements MiddlewareInterface
                     403
                 );
             }
+
+            // Rotação pós-validação (Single-Use Token Pattern / OWASP Anti-Replay):
+            // Regenera o token da sessão após o consumo para mitigar ataques de repetição
+            $_SESSION[self::SESSION_KEY] = bin2hex(random_bytes(32));
+            $sessionToken = (string) $_SESSION[self::SESSION_KEY];
         }
 
         $response = $handler->handle($request);
@@ -75,8 +80,13 @@ final class CsrfMiddleware implements MiddlewareInterface
             return trim((string) $body[self::BODY_KEY]);
         }
 
-        // 3. Tenta extrair de JSON cru
-        $raw = (string) $request->getBody();
+        // 3. Tenta extrair de JSON cru rebobinando a stream PSR-7
+        $bodyStream = $request->getBody();
+        $raw = (string) $bodyStream;
+        if ($bodyStream->isSeekable()) {
+            $bodyStream->rewind();
+        }
+
         if (!empty($raw)) {
             $json = json_decode($raw, true);
             if (is_array($json) && !empty($json[self::BODY_KEY])) {

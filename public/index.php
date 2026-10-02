@@ -12,17 +12,8 @@ if (php_sapi_name() === 'cli-server') {
 
 require __DIR__ . '/../vendor/autoload.php';
 
-// Configuração segura de cookies de sessão (OWASP Best Practices)
-if (session_status() === PHP_SESSION_NONE) {
-    session_set_cookie_params([
-        'lifetime' => 3600,
-        'path'     => '/',
-        'domain'   => '',
-        'secure'   => isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on',
-        'httponly' => true,
-        'samesite' => 'Lax'
-    ]);
-}
+// Configuração segura de cookies de sessão (OWASP ASVS v4)
+\App\Infrastructure\Session\SessionConfig::applySecureCookieParams();
 
 $app = App\AppBootstrap::create();
 

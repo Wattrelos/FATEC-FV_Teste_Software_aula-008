@@ -62,6 +62,7 @@ final class LoginAction
             $_SESSION['customer_name'] = $output->fullName;
             $_SESSION['customer_email'] = $output->email;
             $_SESSION['authenticated_at'] = time();
+            $_SESSION['last_activity'] = time();
 
             $accept = $request->getHeaderLine('Accept');
             $isJson = str_contains($accept, 'application/json')

@@ -104,4 +104,26 @@ final class LoginActionTest extends TestCase
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertEquals('/dashboard.html', $response->getHeaderLine('Location'));
     }
+
+    public function testDeveAutenticarComSucessoMesmoSeEmailConterEspacosAcidentaisOuLetrasMaiusculas(): void
+    {
+        $request = (new ServerRequestFactory())
+            ->createServerRequest('POST', '/api/login')
+            ->withHeader('Content-Type', 'application/json')
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('X-CSRF-Token', $this->csrfToken);
+
+        $request->getBody()->write((string) json_encode([
+            'email' => '   USUARIO@TESTE.COM   ',
+            'password' => 'Senha@123',
+        ]));
+
+        $response = $this->app->handle($request);
+        $body = (string) $response->getBody();
+        $data = json_decode($body, true);
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertTrue($data['success']);
+        $this->assertEquals('usuario@teste.com', $data['data']['user']['email']);
+    }
 }

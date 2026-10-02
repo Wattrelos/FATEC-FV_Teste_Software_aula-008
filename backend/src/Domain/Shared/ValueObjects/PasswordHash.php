@@ -12,6 +12,9 @@ use InvalidArgumentException;
  */
 final readonly class PasswordHash
 {
+    public const MIN_LENGTH = 6;
+    public const MAX_LENGTH = 128;
+
     private string $hash;
 
     public function __construct(string $plainOrHash, bool $isAlreadyHashed = false)
@@ -22,8 +25,12 @@ final readonly class PasswordHash
             return;
         }
 
-        if (strlen($plainOrHash) < 6) {
-            throw new InvalidArgumentException("A senha deve ter no mínimo 6 caracteres.");
+        if (strlen($plainOrHash) < self::MIN_LENGTH) {
+            throw new InvalidArgumentException("A senha deve ter no mínimo " . self::MIN_LENGTH . " caracteres.");
+        }
+
+        if (strlen($plainOrHash) > self::MAX_LENGTH) {
+            throw new InvalidArgumentException("A senha excede o limite máximo permitido de " . self::MAX_LENGTH . " caracteres.");
         }
 
         $this->hash = password_hash($plainOrHash, PASSWORD_DEFAULT);
@@ -36,6 +43,10 @@ final readonly class PasswordHash
 
     public function verify(string $plainPassword): bool
     {
+        if (strlen($plainPassword) > self::MAX_LENGTH) {
+            return false;
+        }
+
         return password_verify($plainPassword, $this->hash);
     }
 

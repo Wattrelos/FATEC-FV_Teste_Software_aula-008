@@ -42,44 +42,82 @@ final class RateLimitMiddleware implements MiddlewareInterface
         $clientIp = $serverParams['REMOTE_ADDR'] ?? '127.0.0.1';
         $now = time();
 
-        if (isset(self::$storage[$clientIp])) {
-            $data = self::$storage[$clientIp];
-
-            if ($now < $data['reset_time']) {
-                if ($data['count'] >= $this->maxAttempts) {
-                    $retryAfter = $data['reset_time'] - $now;
-                    $res = (new SlimResponse())
-                        ->withHeader('Retry-After', (string) $retryAfter)
-                        ->withHeader('X-RateLimit-Limit', (string) $this->maxAttempts)
-                        ->withHeader('X-RateLimit-Remaining', '0');
-
-                    return JsonResponder::error(
-                        $res,
-                        "Muitas tentativas consecutivas. Tente novamente em {$retryAfter} segundos.",
-                        429
-                    );
-                }
-                self::$storage[$clientIp]['count']++;
-            } else {
-                // Janela expirada, reinicia
-                self::$storage[$clientIp] = [
-                    'count' => 1,
-                    'reset_time' => $now + $this->decaySeconds,
-                ];
+        $body = (array) $request->getParsedBody();
+        if ($body === []) {
+            $raw = (string) $request->getBody();
+            if ($raw !== '') {
+                $body = (array) (json_decode($raw, true) ?? []);
+                $request->getBody()->rewind();
             }
-        } else {
-            self::$storage[$clientIp] = [
-                'count' => 1,
-                'reset_time' => $now + $this->decaySeconds,
-            ];
+        }
+
+        $targetEmail = isset($body['email']) && is_string($body['email']) && trim($body['email']) !== ''
+            ? strtolower(trim($body['email']))
+            : null;
+
+        $ipKey = 'ip:' . $clientIp;
+        $accKey = $targetEmail !== null ? 'acc:' . $targetEmail : null;
+
+        $ipRetry = $this->getRetryAfterIfBlocked($ipKey, $now);
+        $accRetry = $accKey !== null ? $this->getRetryAfterIfBlocked($accKey, $now) : null;
+
+        $retryAfter = $ipRetry ?? $accRetry;
+
+        if ($retryAfter !== null) {
+            $res = (new SlimResponse())
+                ->withHeader('Retry-After', (string) $retryAfter)
+                ->withHeader('X-RateLimit-Limit', (string) $this->maxAttempts)
+                ->withHeader('X-RateLimit-Remaining', '0');
+
+            return JsonResponder::error(
+                $res,
+                "Muitas tentativas consecutivas. Tente novamente em {$retryAfter} segundos.",
+                429
+            );
+        }
+
+        $this->incrementAttempt($ipKey, $now);
+        if ($accKey !== null) {
+            $this->incrementAttempt($accKey, $now);
         }
 
         $response = $handler->handle($request);
 
-        $remaining = max(0, $this->maxAttempts - self::$storage[$clientIp]['count']);
+        $ipCount = self::$storage[$ipKey]['count'] ?? 1;
+        $accCount = $accKey !== null ? (self::$storage[$accKey]['count'] ?? 1) : 0;
+        $currentMax = max($ipCount, $accCount);
+        $remaining = max(0, $this->maxAttempts - $currentMax);
 
         return $response
             ->withHeader('X-RateLimit-Limit', (string) $this->maxAttempts)
             ->withHeader('X-RateLimit-Remaining', (string) $remaining);
+    }
+
+    private function getRetryAfterIfBlocked(string $key, int $now): ?int
+    {
+        if (isset(self::$storage[$key])) {
+            $data = self::$storage[$key];
+            if ($now < $data['reset_time'] && $data['count'] >= $this->maxAttempts) {
+                return $data['reset_time'] - $now;
+            }
+        }
+
+        return null;
+    }
+
+    private function incrementAttempt(string $key, int $now): void
+    {
+        if (isset(self::$storage[$key])) {
+            if ($now < self::$storage[$key]['reset_time']) {
+                self::$storage[$key]['count']++;
+
+                return;
+            }
+        }
+
+        self::$storage[$key] = [
+            'count' => 1,
+            'reset_time' => $now + $this->decaySeconds,
+        ];
     }
 }

@@ -108,4 +108,29 @@ final class InputSanitizationTest extends TestCase
         $this->assertArrayNotHasKey('is_admin', $data['data']['user']);
         $this->assertArrayNotHasKey('role', $data['data']['user']);
     }
+
+    public function testDeveRejeitarSenhaExcessivamenteLongaParaPrevenirDoS(): void
+    {
+        $hugePassword = str_repeat('A', 5000);
+
+        $request = (new ServerRequestFactory())
+            ->createServerRequest('POST', '/api/login')
+            ->withHeader('Content-Type', 'application/json')
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('X-CSRF-Token', $this->csrfToken);
+
+        $request->getBody()->write((string) json_encode([
+            'email' => 'usuario@teste.com',
+            'password' => $hugePassword,
+        ]));
+
+        $response = $this->app->handle($request);
+        $body = (string) $response->getBody();
+        $data = json_decode($body, true);
+
+        // Deve retornar 400 Bad Request informando limite de tamanho
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertFalse($data['success']);
+        $this->assertStringContainsString('tamanho máximo permitido', $data['error']);
+    }
 }

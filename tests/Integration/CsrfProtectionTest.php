@@ -111,4 +111,52 @@ final class CsrfProtectionTest extends TestCase
         $this->assertEquals(64, strlen($data['data']['csrf_token'])); // 32 bytes hex = 64 chars
         $this->assertEquals($_SESSION[CsrfMiddleware::SESSION_KEY], $data['data']['csrf_token']);
     }
+
+    public function testDeveRotacionarTokenCsrfAposRequisicaoMutativaParaPrevenirReplay(): void
+    {
+        $tokenOriginal = bin2hex(random_bytes(32));
+        $_SESSION[CsrfMiddleware::SESSION_KEY] = $tokenOriginal;
+
+        $serverRequestFactory = new ServerRequestFactory();
+
+        // 1. Primeira submissão com token válido
+        $primeiraRequest = $serverRequestFactory
+            ->createServerRequest('POST', '/api/login')
+            ->withHeader('Content-Type', 'application/json')
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('X-CSRF-Token', $tokenOriginal);
+
+        $primeiraRequest->getBody()->write((string) json_encode([
+            'email' => 'usuario@teste.com',
+            'password' => 'Senha@123',
+        ]));
+
+        $primeiraResponse = $this->app->handle($primeiraRequest);
+        $this->assertEquals(200, $primeiraResponse->getStatusCode());
+
+        // Verifica se um novo token foi emitido no cabeçalho X-CSRF-Token
+        $novoToken = $primeiraResponse->getHeaderLine(CsrfMiddleware::HEADER_NAME);
+        $this->assertNotEmpty($novoToken);
+        $this->assertNotEquals($tokenOriginal, $novoToken);
+        $this->assertEquals($_SESSION[CsrfMiddleware::SESSION_KEY], $novoToken);
+
+        // 2. Tentativa maliciosa de Replay usando o token antigo já consumido
+        $replayRequest = $serverRequestFactory
+            ->createServerRequest('POST', '/api/login')
+            ->withHeader('Content-Type', 'application/json')
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('X-CSRF-Token', $tokenOriginal);
+
+        $replayRequest->getBody()->write((string) json_encode([
+            'email' => 'usuario@teste.com',
+            'password' => 'Senha@123',
+        ]));
+
+        $replayResponse = $this->app->handle($replayRequest);
+        $this->assertEquals(403, $replayResponse->getStatusCode(), 'Token já consumido deve ser rejeitado no replay');
+
+        $replayData = json_decode((string) $replayResponse->getBody(), true);
+        $this->assertFalse($replayData['success']);
+        $this->assertStringContainsString('Token anti-CSRF', $replayData['error']);
+    }
 }

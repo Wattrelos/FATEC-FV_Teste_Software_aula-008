@@ -20,6 +20,13 @@ use InvalidArgumentException;
  */
 final class AuthenticateCustomerUseCase
 {
+    /**
+     * Hash BCrypt pré-computado para equalização de tempo (Anti-Timing Attack).
+     * Garante que tentativas para usuários inexistentes consumam o mesmo tempo de CPU
+     * que tentativas com senha incorreta para usuários reais.
+     */
+    private const DUMMY_HASH = '$2y$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW';
+
     public function __construct(
         private readonly CustomerRepositoryInterface $repository
     ) {
@@ -34,14 +41,18 @@ final class AuthenticateCustomerUseCase
         try {
             $email = new Email($input->email);
         } catch (InvalidArgumentException) {
-            // Se o e-mail não tiver formato válido, lança erro genérico de credenciais
-            // para evitar ataques exploratórios de formato
+            // Se o e-mail não tiver formato válido, executa dummy hash e lança erro genérico
+            password_verify($input->plainPassword, self::DUMMY_HASH);
+
             throw new DomainException("Credenciais inválidas.");
         }
 
         $customer = $this->repository->findByEmail($email);
 
         if ($customer === null) {
+            // Equalização de tempo: calcula hash BCrypt mesmo quando o usuário não existe
+            password_verify($input->plainPassword, self::DUMMY_HASH);
+
             throw new DomainException("Credenciais inválidas.");
         }
 

@@ -257,6 +257,14 @@
             body: JSON.stringify({ email, password, csrf_token: currentCsrfToken })
           });
 
+          const rotatedToken = response.headers.get("X-CSRF-Token");
+          if (rotatedToken) {
+            currentCsrfToken = rotatedToken;
+            if (csrfInput) csrfInput.value = rotatedToken;
+          } else {
+            await carregarCsrfToken();
+          }
+
           const data = await response.json();
 
           if (response.ok && data.success) {

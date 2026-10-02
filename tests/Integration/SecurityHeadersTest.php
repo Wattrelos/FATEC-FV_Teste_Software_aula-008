@@ -29,6 +29,8 @@ final class SecurityHeadersTest extends TestCase
         $this->assertEquals('DENY', $response->getHeaderLine('X-Frame-Options'));
         $this->assertEquals('1; mode=block', $response->getHeaderLine('X-XSS-Protection'));
         $this->assertEquals('strict-origin-when-cross-origin', $response->getHeaderLine('Referrer-Policy'));
+        $this->assertEquals('max-age=31536000; includeSubDomains', $response->getHeaderLine('Strict-Transport-Security'));
+        $this->assertEquals('X-CSRF-Token', $response->getHeaderLine('Access-Control-Expose-Headers'));
         $this->assertStringContainsString('Content-Security-Policy', implode(',', array_keys($response->getHeaders())));
     }
 }
