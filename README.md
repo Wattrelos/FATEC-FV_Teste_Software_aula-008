@@ -6,6 +6,15 @@
 
 # Laboratório de Teste exaustivo de Login
 
+[![CI Quality & Test Pipeline](https://github.com/Wattrelos/FATEC-FV_Teste_Software_aula-008/actions/workflows/main.yml/badge.svg)](https://github.com/Wattrelos/FATEC-FV_Teste_Software_aula-008/actions/workflows/main.yml)
+[![PHP Version](https://img.shields.io/badge/PHP-8.2%20%7C%208.3%20%7C%208.4-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![Tests](https://img.shields.io/badge/Tests-46%20Passed%20(154%20assertions)-brightgreen?logo=pest&logoColor=white)](https://pestphp.com/)
+[![PHPStan](https://img.shields.io/badge/PHPStan-Level%205%20(0%20errors)-blue?logo=php)](https://phpstan.org/)
+[![PSR-12](https://img.shields.io/badge/Code%20Style-PSR--12%20Compliant-blueviolet)](https://cs.symfony.com/)
+[![E2E Testing](https://img.shields.io/badge/E2E-Playwright%20Chromium-45ba4b?logo=playwright&logoColor=white)](https://playwright.dev/)
+[![BDD](https://img.shields.io/badge/BDD-Behave%20(Gherkin)-00599C?logo=cucumber&logoColor=white)](https://behave.readthedocs.io/)
+[![OWASP ASVS](https://img.shields.io/badge/Security-OWASP%20ASVS%20v4-red?logo=owasp&logoColor=white)](https://owasp.org/www-project-application-security-verification-standard/)
+
 ## Objetivo
 
 O objetivo deste laboratório é realizar testes exaustivos na funcionalidade de login de uma aplicação web, utilizando uma abordagem sistemática para identificar potenciais vulnerabilidades e garantir a segurança e usabilidade do sistema. Serão realizados testes funcionais, testes de validação de dados, testes de desempenho e testes de segurança para cobrir os principais cenários de uso e potenciais cenários de falha.
