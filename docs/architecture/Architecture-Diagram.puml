@@ -1,0 +1,418 @@
+@startuml "Beta Engine SaaS - Target Clean Architecture Diagram (Future)"
+
+' ==============================================================================
+' 🎨 PLANTUML CSS & SKINPARAM STYLING ENGINE
+' ==============================================================================
+skinparam backgroundColor #FEFEFE
+<style>
+  root {
+    backgroundColor #FEFEFE
+    FontName "Inter", "Segoe UI", "Helvetica Neue", sans-serif
+    FontSize 11
+    FontColor #0F172A
+  }
+  document {
+    backgroundColor #FEFEFE
+  }
+  package {
+    RoundCorner 10
+    LineThickness 1.5
+    FontSize 12
+    FontStyle bold
+  }
+  component {
+    RoundCorner 8
+    LineThickness 1.2
+    FontSize 11
+    backgroundColor #FEFEFE
+  }
+  interface {
+    LineThickness 1.5
+    FontSize 11
+  }
+  database {
+    LineThickness 1.5
+    FontSize 11
+  }
+  queue {
+    LineThickness 1.5
+    FontSize 11
+  }
+  arrow {
+    LineThickness 1.3
+    FontSize 10
+  }
+  note {
+    RoundCorner 10
+    LineThickness 1.2
+    FontSize 11
+    BackgroundColor #FEFCE8
+    LineColor #EAB308
+    FontColor #713F12
+  }
+  legend {
+    RoundCorner 10
+    LineThickness 1.2
+    FontSize 10
+    BackgroundColor #F8FAFC
+    LineColor #CBD5E1
+    FontColor #0F172A
+  }
+</style>
+
+skinparam defaultFontName "Inter", "Segoe UI", "Helvetica Neue", sans-serif
+skinparam shadowing false
+skinparam roundCorner 8
+hide stereotype
+
+' --- 0. DELIVERY (Índigo) ---
+skinparam package<<delivery>> {
+  BackgroundColor #EEF2FF
+  BorderColor #6366F1
+  FontColor #312E81
+}
+skinparam component<<deliveryComp>> {
+  backgroundColor #FEFEFE
+  BorderColor #818CF8
+  FontColor #1E1B4B
+}
+
+' --- 1. MIDDLEWARES (Âmbar/Dourado) ---
+skinparam package<<middleware>> {
+  BackgroundColor #FFFBEB
+  BorderColor #F59E0B
+  FontColor #78350F
+}
+skinparam component<<middlewareComp>> {
+  backgroundColor #FEFEFE
+  BorderColor #FBBF24
+  FontColor #451A03
+}
+
+' --- 2. PRESENTATION ADR (Rosa/Magenta) ---
+skinparam package<<presentation>> {
+  BackgroundColor #FDF2F8
+  BorderColor #EC4899
+  FontColor #831843
+}
+skinparam package<<presentationSub>> {
+  BackgroundColor #FFF1F2
+  BorderColor #FB7185
+  FontColor #9F1239
+}
+skinparam component<<presentationComp>> {
+  backgroundColor #FEFEFE
+  BorderColor #F472B6
+  FontColor #831843
+}
+
+' --- 3. APPLICATION (Azul Oceano) ---
+skinparam package<<application>> {
+  BackgroundColor #EFF6FF
+  BorderColor #3B82F6
+  FontColor #1E3A8A
+}
+skinparam component<<applicationComp>> {
+  backgroundColor #FEFEFE
+  BorderColor #60A5FA
+  FontColor #1E3A8A
+}
+
+' --- 4. DOMAIN (Verde Esmeralda - Pure Core) ---
+skinparam package<<domain>> {
+  BackgroundColor #ECFDF5
+  BorderColor #10B981
+  FontColor #064E3B
+}
+skinparam package<<domainSub>> {
+  BackgroundColor #F0FDF4
+  BorderColor #34D399
+  FontColor #065F46
+}
+skinparam component<<domainComp>> {
+  backgroundColor #FEFEFE
+  BorderColor #10B981
+  FontColor #064E3B
+}
+skinparam interface<<domainContract>> {
+  backgroundColor #FEFEFE
+  BorderColor #059669
+  FontColor #065F46
+}
+
+' --- 5. INFRASTRUCTURE (Roxo / Violeta) ---
+skinparam package<<infra>> {
+  BackgroundColor #FAF5FF
+  BorderColor #8B5CF6
+  FontColor #4C1D95
+}
+skinparam package<<infraSub>> {
+  BackgroundColor #F5F3FF
+  BorderColor #A78BFA
+  FontColor #5B21B6
+}
+skinparam component<<infraComp>> {
+  backgroundColor #FEFEFE
+  BorderColor #A78BFA
+  FontColor #4C1D95
+}
+
+' --- 6. STORAGE (Slate & Brand Colors) ---
+skinparam package<<storage>> {
+  BackgroundColor #F8FAFC
+  BorderColor #64748B
+  FontColor #0F172A
+}
+skinparam database<<db_mysql>> {
+  BackgroundColor #E0F2FE
+  BorderColor #0284C7
+  FontColor #0369A1
+}
+skinparam database<<db_redis>> {
+  BackgroundColor #FEE2E2
+  BorderColor #EF4444
+  FontColor #991B1B
+}
+skinparam queue<<queue_rabbitmq>> {
+  BackgroundColor #FFEDD5
+  BorderColor #F97316
+  FontColor #9A3412
+}
+
+' --- NOTES & CALLOUTS ---
+skinparam note {
+  BackgroundColor #FEFCE8
+  BorderColor #EAB308
+  FontColor #713F12
+  RoundCorner 8
+}
+
+' ==============================================================================
+' 0. FRAMEWORK & HTTP ENTRYPOINT
+' ==============================================================================
+package "0. 🚀 HTTP Delivery & Bootstrap (PSR-7 / PSR-15 / PSR-11)" as DeliveryLayer <<delivery>> {
+    [<b>public_html/index.php</b>\n<size:10><i>Ponto Único de Entrada (Front Controller)</i></size>] as Entrypoint <<deliveryComp>>
+    [<b>config/routes/</b>\n<size:10><i>(Storefront, Admin, POS, Api)</i></size>] as RouteDefinitions <<deliveryComp>>
+    [<b>AppContainer</b>\n<size:10><i>(PHP-DI Injeção de Dependências PSR-11)</i></size>] as Container <<deliveryComp>>
+}
+
+' ==============================================================================
+' 1. MIDDLEWARE PIPELINE
+' ==============================================================================
+package "1. 🛡️ Pipeline & Guard Middlewares (PSR-15)" as MiddlewareLayer <<middleware>> {
+    [<b>LanguageNegotiatorMiddleware</b>\n<size:10><i>Detecção e negociação de locale</i></size>] as LangMW <<middlewareComp>>
+    [<b>AuthGuardMiddleware</b>\n<size:10><i>(Guarda de Sessão & Tokens JWT)</i></size>] as AuthMW <<middlewareComp>>
+    [<b>AntiCsrfMiddleware</b>\n<size:10><i>Proteção contra CSRF tokenizado</i></size>] as CsrfMW <<middlewareComp>>
+    [<b>RateLimiterMiddleware</b>\n<size:10><i>Limitação de requisições por IP/token</i></size>] as RateMW <<middlewareComp>>
+}
+
+' ==============================================================================
+' 2. PRESENTATION LAYER (ADR - Action-Domain-Responder)
+' ==============================================================================
+package "2. 🎯 Presentation Layer (Padrão ADR)" as PresentationLayer <<presentation>> {
+    package "Action Controllers (Skinny Actions)" as ActionControllers <<presentationSub>> {
+        [<b>Storefront Actions</b>\n<size:10><i>Loja Virtual / Catálogo / Checkout</i></size>] as StorefrontAction <<presentationComp>>
+        [<b>Admin Actions</b>\n<size:10><i>Painel Administrativo / Backoffice</i></size>] as AdminAction <<presentationComp>>
+        [<b>POS Actions</b>\n<size:10><i>Ponto de Venda / Pré-Venda / Caixa</i></size>] as PosAction <<presentationComp>>
+        [<b>API REST Actions</b>\n<size:10><i>Endpoints RESTful v1 (JSON)</i></size>] as ApiAction <<presentationComp>>
+    }
+    
+    package "Responders (Formatadores HTTP)" as Responders <<presentationSub>> {
+        [<b>TwigHtmlResponder</b>\n<size:10><i>Renderização de HTML Server-Side</i></size>] as TwigResponder <<presentationComp>>
+        [<b>JsonApiResponse</b>\n<size:10><i>Serialização padronizada JSON</i></size>] as JsonResponder <<presentationComp>>
+        [<b>RedirectResponder</b>\n<size:10><i>Redirecionamentos HTTP seguros</i></size>] as RedirectResponder <<presentationComp>>
+    }
+
+    package "Views & Templates" as ViewLayer <<presentationSub>> {
+        [<b>TwigEnvironment</b>\n<size:10><i>Motor de templates compilado</i></size>] as Twig <<presentationComp>>
+        [<b>Twig Templates</b>\n<size:10><i>(resources/views/)</i></size>] as Views <<presentationComp>>
+    }
+}
+
+' ==============================================================================
+' 3. APPLICATION LAYER (Use Cases & Orchestration)
+' ==============================================================================
+package "3. ⚙️ Application Layer (Casos de Uso & DTOs)" as ApplicationLayer <<application>> {
+    [<b>DTOs</b>\n<size:10><i>(Contratos de Entrada e Saída Imutáveis)</i></size>] as AppDTOs <<applicationComp>>
+    [<b>Use Cases / Command Handlers</b>\n<size:10><i>ProcessCheckoutUseCase, CreatePreSaleUseCase</i></size>\n<size:10><i>RegisterCustomerUseCase, EmitFiscalTicketUseCase</i></size>] as UseCases <<applicationComp>>
+    [<b>Unit of Work Interface</b>\n<size:10><i>(Fronteira Transacional Abstrata)</i></size>] as UoWInterface <<applicationComp>>
+    [<b>DomainEventDispatcherInterface</b>\n<size:10><i>(Contrato do Barramento de Eventos)</i></size>] as EventBusInterface <<applicationComp>>
+}
+
+' ==============================================================================
+' 4. DOMAIN LAYER (Pure Enterprise Business Logic)
+' ==============================================================================
+package "4. 💎 Domain Layer (DDD Puro - Zero Dependências Externas)" as DomainLayer <<domain>> {
+    [<b>Aggregate Roots & Entidades</b>\n<size:10><i>Order, Customer, Product, PreSale, User</i></size>] as Entities <<domainComp>>
+    [<b>Value Objects (Imutáveis)</b>\n<size:10><i>Money, Email, CpfCnpj, Address, OrderStatus</i></size>] as ValueObjects <<domainComp>>
+    [<b>Domain Events</b>\n<size:10><i>OrderPlaced, PaymentReceived, PreSaleCreated</i></size>] as DomainEvents <<domainComp>>
+    
+    package "Repository Contracts (Portas / Interfaces)" as DomainContracts <<domainSub>> {
+        interface "OrderRepositoryInterface" as OrderRepoInterface <<domainContract>>
+        interface "CustomerRepositoryInterface" as CustomerRepoInterface <<domainContract>>
+        interface "ProductRepositoryInterface" as ProductRepoInterface <<domainContract>>
+    }
+}
+
+' ==============================================================================
+' 5. INFRASTRUCTURE & ADAPTERS (Driven Adapters)
+' ==============================================================================
+package "5. 🔌 Infrastructure & Adapters Layer (Implementações Técnicas)" as InfraLayer <<infra>> {
+    package "Persistência SQL & Mapeamento de Dados" as PersistenceInfra <<infraSub>> {
+        [<b>SqlRepositories</b>\n<size:10><i>(SqlOrderRepository, SqlCustomerRepository)</i></size>] as ConcreteRepos <<infraComp>>
+        [<b>Data Mappers</b>\n<size:10><i>(Hydrators & Tradutores SQL ⇄ Entidades)</i></size>] as Mappers <<infraComp>>
+        [<b>DataAccessObject (DAO / PDO)</b>\n<size:10><i>Conexão centralizada e execução preparada</i></size>] as DAO <<infraComp>>
+        [<b>QueryBuilder</b>\n<size:10><i>Construção segura de SQL parametrizado</i></size>] as QB <<infraComp>>
+        [<b>UnitOfWork Implementation</b>\n<size:10><i>Controle atômico de transação (ACID)</i></size>] as ConcreteUoW <<infraComp>>
+        [<b>Identity Map</b>\n<size:10><i>(Cache em RAM - Previne queries redundantes N+1)</i></size>] as IdentityMap <<infraComp>>
+    }
+    
+    package "Gateways Externos & Clientes HTTP" as ExternalGateways <<infraSub>> {
+        [<b>PaymentGatewayAdapters</b>\n<size:10><i>(Stripe, Pix, TEF)</i></size>] as PaymentAdapters <<infraComp>>
+        [<b>ShippingGatewayAdapters</b>\n<size:10><i>(Correios, Jadlog, Melhores Envios)</i></size>] as ShippingAdapters <<infraComp>>
+        [<b>FiscalGatewayAdapters</b>\n<size:10><i>(NFC-e / NFS-e / SEFAZ)</i></size>] as FiscalAdapters <<infraComp>>
+    }
+    
+    package "Mensageria Assíncrona & Filas" as AsyncMessaging <<infraSub>> {
+        [<b>DomainEventDispatcher</b>\n<size:10><i>(Publicador concreto de eventos de domínio)</i></size>] as ConcreteEventBus <<infraComp>>
+        [<b>RabbitMQ QueueService</b>\n<size:10><i>Serialização e despacho para mensageria</i></size>] as QueueService <<infraComp>>
+        [<b>Worker CLI Consumers</b>\n<size:10><i>Processamento em background (daemons PHP)</i></size>] as QueueWorkers <<infraComp>>
+    }
+}
+
+' ==============================================================================
+' 6. EXTERNAL DRIVERS & STORAGE
+' ==============================================================================
+package "6. 🗄️ Bancos de Dados & Drivers Externos" as StorageLayer <<storage>> {
+    database "<b>MySQL 8.0</b>\n<size:10><i>(InnoDB / Armazenamento Primário Transacional)</i></size>" as MySQL <<db_mysql>>
+    database "<b>Redis 7.x</b>\n<size:10><i>(Cache L2 & Sessão Distribuída em Memória)</i></size>" as Redis <<db_redis>>
+    queue "<b>RabbitMQ 3.x</b>\n<size:10><i>(Broker de Mensageria & Filas AMQP)</i></size>" as RabbitMQ <<queue_rabbitmq>>
+}
+
+' ==============================================================================
+' NOTAS DIDÁTICAS DE ARQUITETURA
+' ==============================================================================
+note right of PresentationLayer
+  <b>🎯 Padrão ADR (Action-Domain-Responder)</b>
+  Substitui o MVC monolítico:
+  <b>1. Action:</b> Recebe Request PSR-7, extrai input e cria DTO.
+  <b>2. Domain:</b> Executa o Caso de Uso sem acoplamento HTTP.
+  <b>3. Responder:</b> Formata a resposta em HTML (Twig) ou JSON.
+end note
+
+note left of DomainLayer
+  <b>💎 Regra de Dependência (Clean Architecture)</b>
+  O <b>Domínio</b> é o coração corporativo (PHP puro, zero libs).
+  As dependências de código apontam <b>sempre para dentro</b>.
+  A <b>Infraestrutura</b> implementa os contratos do Domínio
+  via <b>DIP (Inversão de Dependência)</b>.
+end note
+
+note right of InfraLayer
+  <b>🔄 Transações ACID & Desempenho</b>
+  • <b>Unit of Work (UoW):</b> Garante commit/rollback atômico.
+  • <b>Identity Map:</b> Cache L1 em RAM prevenindo consultas N+1.
+  • <b>Cache-Aside (Redis):</b> Consultas servidas direto da RAM.
+end note
+
+' ==============================================================================
+' HIERARQUIA VERTICAL DAS CAMADAS (CLEAN STACK LAYOUT)
+' ==============================================================================
+DeliveryLayer -[hidden]down-> MiddlewareLayer
+MiddlewareLayer -[hidden]down-> PresentationLayer
+PresentationLayer -[hidden]down-> ApplicationLayer
+ApplicationLayer -[hidden]down-> DomainLayer
+DomainLayer -[hidden]down-> InfraLayer
+InfraLayer -[hidden]down-> StorageLayer
+
+' ==============================================================================
+' RELATIONSHIPS & FLOW OF CONTROL (COLOR CODED)
+' ==============================================================================
+
+' --- BOOTSTRAP & ROUTING ---
+Entrypoint -[#2563EB,bold]-> RouteDefinitions : 1. Despacha Requisição PSR-7
+Entrypoint ..[#7C3AED,dashed]> Container : 2. Inicializa Container DI
+RouteDefinitions -[#2563EB,bold]-> MiddlewareLayer : 3. Executa Pipeline Global & Grupos
+
+' --- MIDDLEWARE EXECUTION ---
+LangMW -[#2563EB]-> RouteDefinitions : Detecta Idioma (i18n)
+AuthMW ..[#DC2626,dashed]> Redis : Valida Token de Sessão / JWT
+RateMW ..[#DC2626,dashed]> Redis : Checa Limites de Taxa (IP/Token)
+
+' --- ROUTING TO ACTIONS ---
+RouteDefinitions -[#2563EB]-> StorefrontAction : Rota /storefront
+RouteDefinitions -[#2563EB]-> AdminAction : Rota /admin
+RouteDefinitions -[#2563EB]-> PosAction : Rota /pos
+RouteDefinitions -[#2563EB]-> ApiAction : Rota /api/v1
+
+' --- DI RESOLUTION (Clean, Injeção via Construtor) ---
+Container ..[#7C3AED,dashed]> ActionControllers : Injeta Dependências no Construtor
+Container ..[#7C3AED,dashed]> UseCases : Injeta Repositórios & Gateways
+Container ..[#7C3AED,dashed]> ConcreteRepos : Injeta DAO & Mappers
+
+' --- PRESENTATION & APPLICATION ORCHESTRATION ---
+ActionControllers -[#2563EB]-> AppDTOs : Mapeia Input HTTP em DTO
+ActionControllers -[#2563EB,bold]-> UseCases : Executa Caso de Uso (InputDTO)
+ActionControllers -[#2563EB]-> Responders : Envia OutputDTO para Formatação
+
+' --- RESPONDERS ---
+TwigResponder -[#2563EB]-> Twig : Injeta Dados no View Context
+Twig -[#2563EB]-> Views : Compila Templates Twig
+JsonResponder -[#2563EB]-> DeliveryLayer : Retorna Resposta JSON (PSR-7)
+
+' --- USE CASE ORCHESTRATION ---
+UseCases -[#2563EB]-> Entities : Aplica Regras Invariantes
+UseCases -[#2563EB]-> ValueObjects : Valida & Instancia
+UseCases -[#2563EB]-> DomainContracts : Persiste via Portas/Interfaces
+UseCases -[#2563EB]-> UoWInterface : Coordena Transação Atômica (ACID)
+UseCases -[#2563EB]-> ExternalGateways : Delega Chamadas Externas
+UseCases -[#2563EB]-> EventBusInterface : Publica Eventos de Domínio
+
+' --- DOMAIN PURITY (Entities raise events) ---
+Entities ..[#EA580C,dashed]> DomainEvents : Dispara Eventos de Domínio
+Entities -[#059669]-> ValueObjects : Composto por VOs Imutáveis
+
+' --- INFRASTRUCTURE PERSISTENCE IMPLEMENTATIONS (DIP) ---
+DomainContracts <|.[#059669,bold]. ConcreteRepos : <b><color:#059669>[DIP]</color></b> Implementa Interface
+ConcreteRepos -[#0284C7]-> Mappers : Hidrata Entidades via Mappers
+ConcreteRepos ..[#DC2626,dashed]> Redis : Estratégia Cache-Aside
+UoWInterface <|.[#059669,bold]. ConcreteUoW : <b><color:#059669>[DIP]</color></b> Implementa UoW
+ConcreteUoW -[#0284C7]-> DAO : Controla Begin/Commit/Rollback
+
+Mappers -[#0284C7]-> DAO : Executa Declarações Preparadas (PDO)
+DAO -[#0284C7]-> QB : Constrói SQL Parametrizado Seguro
+DAO -[#0284C7]-> IdentityMap : Previne Instâncias Repetidas em RAM
+DAO -[#0284C7,bold]-> MySQL : Executa Consultas & Mutações (ACID)
+
+' --- ASYNC EVENT FLOW ---
+EventBusInterface <|.[#059669,bold]. ConcreteEventBus : <b><color:#059669>[DIP]</color></b> Implementa Barramento
+ConcreteEventBus -[#EA580C,bold]-> QueueService : Serializa Evento (JSON)
+QueueService -[#EA580C,bold]-> RabbitMQ : Publica Mensagem na Fila AMQP
+RabbitMQ -[#EA580C,bold]-> QueueWorkers : Distribui Mensagens para Workers
+QueueWorkers -[#EA580C,bold]-> UseCases : Dispara Handlers Assíncronos
+
+' --- EXTERNAL GATEWAYS CALLS ---
+PaymentAdapters -[#2563EB]-> ExternalGateways : Integração Gateway (Stripe/Pix)
+
+' ==============================================================================
+' LEGENDA DIDÁTICA DO DIAGRAMA
+' ==============================================================================
+legend right
+  | <size:12><b>CAMADA ARQUITETURAL</b></size> | <size:12><b>RESPONSABILIDADE & PAPEL NO CLEAN DDD</b></size> |
+  | <back:#EEF2FF><color:#312E81><b> 0. Entrega & Bootstrap </b></color></back> | Front Controller (index.php), Rotas e Container DI (PHP-DI) |
+  | <back:#FFFBEB><color:#78350F><b> 1. Middlewares PSR-15 </b></color></back> | Guards de Sessão/JWT, CSRF, Rate Limiting e Negociação i18n |
+  | <back:#FDF2F8><color:#831843><b> 2. Apresentação (ADR) </b></color></back> | Actions enxutas, Responders HTTP e Templates Twig |
+  | <back:#EFF6FF><color:#1E3A8A><b> 3. Aplicação (Use Cases) </b></color></back> | Orquestração de Casos de Uso, DTOs imutáveis e UoW Interface |
+  | <back:#ECFDF5><color:#064E3B><b> 4. Domínio Puro (DDD) </b></color></back> | Entidades, Value Objects, Domain Events e Contratos de Repositório |
+  | <back:#FAF5FF><color:#4C1D95><b> 5. Infraestrutura Técnica </b></color></back> | Repositórios SQL, Mappers, DAO/PDO, Unit of Work e Gateways |
+  | <back:#F8FAFC><color:#0F172A><b> 6. Armazenamento Externo </b></color></back> | MySQL 8.0 (ACID), Redis 7.x (Cache L2) e RabbitMQ (Mensageria) |
+  | <size:12><b>TIPO DE FLUXO / CONEXÃO</b></size> | <size:12><b>SIGNIFICADO & PROTOCOLO</b></size> |
+  | <color:#2563EB><b>────────></b></color> (Azul Sólido) | **Chamada Síncrona / Fluxo Direto:** Requisições HTTP, despacho e casos de uso |
+  | <color:#059669><b>- - - - - ▷</b></color> (Verde Tracejado) | **Inversão de Dependência [DIP]:** Implementa interfaces e contratos do Domínio |
+  | <color:#7C3AED><b>· · · · · ></b></color> (Roxo Pontilhado) | **Injeção de Dependência [DI]:** Container PSR-11 injetando nos construtores |
+  | <color:#EA580C><b>────────></b></color> (Laranja Sólido) | **Mensageria Assíncrona:** Publicação de eventos e consumo via workers AMQP |
+  | <color:#0284C7><b>────────></b></color> (Ciano Sólido) | **Persistência SQL / Transacional:** Acesso ao MySQL via PDO/DAO parametrizado |
+  | <color:#DC2626><b>- - - - - ></b></color> (Vermelho Tracejado) | **Cache-Aside / Sessão:** Leitura e validação rápida em memória no Redis |
+endlegend
+
+@enduml

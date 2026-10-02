@@ -1,0 +1,47 @@
+# Ambientes Virtuais e Variáveis de Ambiente
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+!.env.example
+
+# Byte-compiled / Caches Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Playwright & Relatórios de Testes
+test-results/
+playwright-report/
+blob-report/
+.playwright/
+reports/
+*.log
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# PHP / Composer
+vendor/
+.phpunit.cache/
+.phpunit.result.cache
+
+# Node / NPM
+node_modules/
+
+# Editores e IDEs
+
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+*~

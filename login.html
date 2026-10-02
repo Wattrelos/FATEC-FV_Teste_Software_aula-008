@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratório de Testes — Autenticação</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background: #f4f6f8; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,.1); width: 100%; max-width: 380px; }
+    h2 { margin-bottom: 20px; color: #333; text-align: center; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; margin-bottom: 6px; color: #555; font-size: 14px; font-weight: bold; }
+    input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+    input:focus { outline: 2px solid #80bfff; border-color: #0066cc; }
+    button { width: 100%; padding: 12px; background: #0066cc; color: #fff; border: 0; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 8px; }
+    button:hover { background: #0052a3; }
+    .btn-secondary { background: #e02424; margin-top: 15px; }
+    .btn-secondary:hover { background: #c81e1e; }
+    .message { margin-top: 16px; padding: 10px; border-radius: 4px; font-size: 14px; text-align: center; display: none; }
+    .message.error { background: #fde8e8; color: #9b1c1c; border: 1px solid #f8b4b4; display: block; }
+    .message.success { background: #def7ec; color: #03543f; border: 1px solid #84e1bc; display: block; }
+    .dashboard { display: none; text-align: center; }
+    .dashboard h3 { color: #03543f; margin-bottom: 12px; }
+    .user-info { margin-top: 10px; font-size: 14px; color: #4b5563; }
+  </style>
+</head>
+<body>
+  <main class="card" id="login-container">
+    <section id="login-form-wrapper" aria-labelledby="login-title">
+      <h2 id="login-title">Acesso ao Sistema</h2>
+      <form id="loginForm" method="POST" action="/login">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" data-testid="input-email" placeholder="seu@email.com" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input type="password" id="password" name="password" data-testid="input-password" placeholder="Sua senha" autocomplete="current-password">
+        </div>
+        <button type="submit" id="submit-btn" data-testid="button-submit">Entrar</button>
+      </form>
+    </section>
+
+    <div id="feedback" class="message" data-testid="feedback-message" role="status" aria-live="polite"></div>
+
+    <section id="dashboard" class="dashboard" data-testid="dashboard-panel" aria-labelledby="dashboard-title">
+      <h3 id="dashboard-title">Bem-vindo à Área Logada!</h3>
+      <p id="dashboard-welcome">Você acessou o painel principal com sucesso.</p>
+      <div id="user-display" class="user-info"></div>
+      <button type="button" id="logout-btn" class="btn-secondary" data-testid="button-logout">Sair do Sistema</button>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const feedback = document.getElementById("feedback");
+    const formWrapper = document.getElementById("login-form-wrapper");
+    const dashboard = document.getElementById("dashboard");
+    const userDisplay = document.getElementById("user-display");
+    const logoutBtn = document.getElementById("logout-btn");
+
+    function showFeedback(type, text) {
+      feedback.className = "message " + type;
+      feedback.textContent = text;
+    }
+
+    function clearFeedback() {
+      feedback.className = "message";
+      feedback.textContent = "";
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      clearFeedback();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        showFeedback("error", "Preencha todos os campos obrigatórios.");
+        return;
+      }
+
+      // Se executado via HTTP/HTTPS, chama a API backend Slim 4
+      if (window.location.protocol.startsWith("http")) {
+        try {
+          const response = await fetch("/api/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json",
+              "X-Requested-With": "XMLHttpRequest"
+            },
+            body: JSON.stringify({ email, password })
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            showFeedback("success", data.data?.message || "Login realizado com sucesso!");
+            setTimeout(() => {
+              formWrapper.style.display = "none";
+              dashboard.style.display = "block";
+              if (data.data?.user) {
+                userDisplay.textContent = `Usuário: ${data.data.user.name} (${data.data.user.email})`;
+              }
+            }, 300);
+          } else {
+            showFeedback("error", data.error || "Credenciais inválidas.");
+          }
+        } catch (err) {
+          showFeedback("error", "Erro ao conectar com o servidor.");
+        }
+      } else {
+        // Fallback para execução offline/file:///
+        const MOCK_USERS = {
+          "usuario@teste.com": { password: "Senha@123", status: true },
+          "inativo@teste.com": { password: "Senha@123", status: false }
+        };
+
+        const user = MOCK_USERS[email];
+        if (!user) {
+          showFeedback("error", "Credenciais inválidas.");
+          return;
+        }
+
+        if (!user.status) {
+          showFeedback("error", "Conta de cliente desativada.");
+          return;
+        }
+
+        if (password !== user.password) {
+          showFeedback("error", "Credenciais inválidas.");
+          return;
+        }
+
+        showFeedback("success", "Login realizado com sucesso!");
+        setTimeout(() => {
+          formWrapper.style.display = "none";
+          dashboard.style.display = "block";
+        }, 300);
+      }
+    });
+
+
+    logoutBtn.addEventListener("click", async () => {
+      if (window.location.protocol.startsWith("http")) {
+        await fetch("/api/logout", {
+          method: "POST",
+          headers: { "Accept": "application/json" }
+        });
+      }
+      dashboard.style.display = "none";
+      formWrapper.style.display = "block";
+      document.getElementById("email").value = "";
+      document.getElementById("password").value = "";
+      showFeedback("success", "Sessão encerrada com sucesso.");
+    });
+  </script>
+</body>
+</html>
