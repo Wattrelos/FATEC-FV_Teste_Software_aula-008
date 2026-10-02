@@ -10,6 +10,9 @@ on:
 permissions:
   contents: read
 
+env:
+  ACTIONS_RUNNER_FORCE_NODE24: "true"
+
 jobs:
   backend-quality-and-tests:
     name: Backend QA (PHP 8.4)
