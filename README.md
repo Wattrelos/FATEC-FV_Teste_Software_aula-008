@@ -7,7 +7,7 @@
 # Laboratório de Teste exaustivo de Login
 
 [![CI Quality & Test Pipeline](https://github.com/Wattrelos/FATEC-FV_Teste_Software_aula-008/actions/workflows/main.yml/badge.svg)](https://github.com/Wattrelos/FATEC-FV_Teste_Software_aula-008/actions/workflows/main.yml)
-[![PHP Version](https://img.shields.io/badge/PHP-8.2%20%7C%208.3%20%7C%208.4-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![PHP Version](https://img.shields.io/badge/PHP-8.4-777BB4?logo=php&logoColor=white)](https://www.php.net/)
 [![Tests](https://img.shields.io/badge/Tests-46%20Passed%20(154%20assertions)-brightgreen?logo=pest&logoColor=white)](https://pestphp.com/)
 [![PHPStan](https://img.shields.io/badge/PHPStan-Level%205%20(0%20errors)-blue?logo=php)](https://phpstan.org/)
 [![PSR-12](https://img.shields.io/badge/Code%20Style-PSR--12%20Compliant-blueviolet)](https://cs.symfony.com/)
