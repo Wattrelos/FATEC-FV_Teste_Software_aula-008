@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área Restrita — Painel de Controle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --primary: #38bdf8;
+      --primary-hover: #0ea5e9;
+      --success: #10b981;
+      --danger: #ef4444;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body {
+      background: radial-gradient(circle at top, #1e293b, var(--bg));
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 580px;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      padding: 36px;
+      animation: fadeIn 0.4s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--success);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .badge::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--success);
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    p.subtitle { color: var(--text-muted); font-size: 14px; }
+    .profile-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .profile-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 14px;
+    }
+    .profile-row:last-child { border-bottom: none; }
+    .label { color: var(--text-muted); font-weight: 500; }
+    .value { font-weight: 600; color: var(--text); }
+    .security-specs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .spec-item {
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid var(--card-border);
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+    .spec-item strong { display: block; color: var(--primary); margin-bottom: 4px; font-size: 13px; }
+    .actions { display: flex; gap: 12px; }
+    button {
+      flex: 1;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 0;
+    }
+    .btn-danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .btn-danger:hover {
+      background: var(--danger);
+      color: #fff;
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+    }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.15); }
+  </style>
+</head>
+<body>
+  <main class="container" id="dashboard-container" data-testid="dashboard-panel">
+    <div class="header">
+      <span class="badge" data-testid="session-badge">Sessão Autenticada e Segura</span>
+      <h1 id="dashboard-title">Bem-vindo à Área Logada!</h1>
+      <p class="subtitle" id="dashboard-welcome">Você acessou o painel principal com sucesso.</p>
+    </div>
+
+    <section class="profile-card" aria-label="Dados do Usuário">
+      <div class="profile-row">
+        <span class="label">Nome Completo:</span>
+        <span class="value" id="user-name" data-testid="user-name">Usuário Teste</span>
+      </div>
+      <div class="profile-row">
+        <span class="label">Endereço de E-mail:</span>
+        <span class="value" id="user-email" data-testid="user-email">usuario@teste.com</span>
+      </div>
+      <div class="profile-row">
+        <span class="label">Identificador do Cliente (ID):</span>
+        <span class="value" id="user-id" data-testid="user-id">#1</span>
+      </div>
+      <div class="profile-row">
+        <span class="label">Horário de Autenticação:</span>
+        <span class="value" id="auth-time" data-testid="auth-time">Agora</span>
+      </div>
+    </section>
+
+    <section class="security-specs" aria-label="Mecanismos de Segurança Ativos">
+      <div class="spec-item">
+        <strong>Session Fixation</strong>
+        <span>ID de sessão regenerado após login</span>
+      </div>
+      <div class="spec-item">
+        <strong>Anti-CSRF</strong>
+        <span>Synchronizer Token Pattern ativo</span>
+      </div>
+      <div class="spec-item">
+        <strong>Brute Force</strong>
+        <span>Rate Limit (máx 5 tentativas/min)</span>
+      </div>
+      <div class="spec-item">
+        <strong>Cookies Seguros</strong>
+        <span>HttpOnly e SameSite=Lax</span>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button type="button" class="btn-danger" id="logout-btn" data-testid="button-logout">Sair do Sistema</button>
+      <button type="button" class="btn-secondary" onclick="window.location.reload()">Atualizar Painel</button>
+    </div>
+  </main>
+
+  <script>
+    async function carregarDadosSessao() {
+      if (window.location.protocol.startsWith("http")) {
+        try {
+          const res = await fetch("/api/me", {
+            headers: {
+              "Accept": "application/json",
+              "X-Requested-With": "XMLHttpRequest"
+            }
+          });
+
+          if (!res.ok) {
+            window.location.href = "/login.html?error=" + encodeURIComponent("Sessão expirada. Faça login novamente.");
+            return;
+          }
+
+          const data = await res.json();
+          if (data.success && data.data?.user) {
+            document.getElementById("user-name").textContent = data.data.user.name || "Usuário Teste";
+            document.getElementById("user-email").textContent = data.data.user.email || "usuario@teste.com";
+            document.getElementById("user-id").textContent = "#" + (data.data.user.id || 1);
+            if (data.data.authenticated_at) {
+              const date = new Date(data.data.authenticated_at * 1000);
+              document.getElementById("auth-time").textContent = date.toLocaleTimeString("pt-BR");
+            }
+          }
+        } catch (e) {
+          console.warn("API de sessão não disponível, usando estado em memória.");
+        }
+      }
+    }
+
+    document.getElementById("logout-btn").addEventListener("click", async () => {
+      if (window.location.protocol.startsWith("http")) {
+        try {
+          await fetch("/api/logout", {
+            method: "POST",
+            headers: { "Accept": "application/json" }
+          });
+        } catch (e) {}
+      }
+      window.location.href = "/login.html?msg=" + encodeURIComponent("Sessão encerrada com sucesso.");
+    });
+
+    carregarDadosSessao();
+  </script>
+</body>
+</html>

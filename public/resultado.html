@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resposta do Sistema — Laboratório de Testes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --primary: #38bdf8;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body {
+      background: radial-gradient(circle at top, #1e293b, var(--bg));
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card {
+      width: 100%;
+      max-width: 500px;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      padding: 36px;
+      text-align: center;
+      animation: popIn 0.3s ease-out;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .icon-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: var(--danger);
+    }
+    .status-code {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+      margin-bottom: 12px;
+    }
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+    p.message { color: var(--text-muted); font-size: 15px; line-height: 1.5; margin-bottom: 28px; }
+    .technical-details {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: left;
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+    .detail-item { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .detail-item:last-child { margin-bottom: 0; }
+    .btn {
+      display: inline-block;
+      width: 100%;
+      padding: 12px;
+      background: var(--primary);
+      color: #0f172a;
+      border: 0;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #0ea5e9; }
+  </style>
+</head>
+<body>
+  <main class="card" id="error-container" data-testid="error-container">
+    <div class="icon-badge" id="error-icon">⚠️</div>
+    <div>
+      <span class="status-code" id="error-status" data-testid="error-status">HTTP 401 UNAUTHORIZED</span>
+    </div>
+    <h1 id="error-title">Falha de Autenticação</h1>
+    <p class="message" id="error-message" data-testid="error-message">As credenciais fornecidas não foram reconhecidas pelo sistema.</p>
+
+    <section class="technical-details" aria-label="Detalhes Técnicos">
+      <div class="detail-item">
+        <span style="color: var(--text-muted);">Vulnerabilidade Mitigada:</span>
+        <strong id="error-mitigation">Enumeração de Usuários</strong>
+      </div>
+      <div class="detail-item">
+        <span style="color: var(--text-muted);">Origem:</span>
+        <span>AuthenticateCustomerUseCase</span>
+      </div>
+      <div class="detail-item">
+        <span style="color: var(--text-muted);">Data/Hora:</span>
+        <span id="error-timestamp">--:--:--</span>
+      </div>
+    </section>
+
+    <a href="/login.html" class="btn" id="btn-voltar" data-testid="button-voltar">Tentar Novamente</a>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("status") || "401";
+    const msg = params.get("msg") || "Credenciais inválidas.";
+    const title = params.get("title") || "Falha de Autenticação";
+
+    document.getElementById("error-status").textContent = "HTTP " + code;
+    document.getElementById("error-message").textContent = msg;
+    document.getElementById("error-title").textContent = title;
+    document.getElementById("error-timestamp").textContent = new Date().toLocaleTimeString("pt-BR");
+
+    if (code === "429") {
+      document.getElementById("error-mitigation").textContent = "Ataque de Força Bruta (Rate Limit)";
+      document.getElementById("error-title").textContent = "Muitas Tentativas";
+    } else if (code === "403") {
+      document.getElementById("error-mitigation").textContent = "Cross-Site Request Forgery (CSRF)";
+      document.getElementById("error-title").textContent = "Acesso Proibido";
+    }
+  </script>
+</body>
+</html>

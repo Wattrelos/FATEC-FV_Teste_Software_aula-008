@@ -26,7 +26,7 @@ if [ ! -d ".venv" ]; then
 fi
 
 # Inicia servidor web PHP em background para testes integrados
-php -S 127.0.0.1:8088 public/index.php > /dev/null 2>&1 &
+php -S 127.0.0.1:8088 -t public public/index.php > /dev/null 2>&1 &
 SERVER_PID=$!
 
 cleanup() {
@@ -38,6 +38,12 @@ sleep 1
 TEST_BASE_URL="http://127.0.0.1:8088/login.html" .venv/bin/behave
 
 echo ""
+echo "[3/3] Executando simulação de telas E2E no Playwright..."
+echo "----------------------------------------------------------"
+TEST_BASE_URL="http://127.0.0.1:8088" .venv/bin/python test_playwright_telas.py
+
+echo ""
 echo "=========================================================="
 echo " Todos os testes foram concluídos com sucesso! [PASS]"
 echo "=========================================================="
+
