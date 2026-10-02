@@ -13,7 +13,7 @@ use InvalidArgumentException;
 
 /**
  * Caso de Uso: Autenticar Cliente.
- * 
+ *
  * Regra de Segurança Crítica (Prevenção de Enumeração de Usuários):
  * Retorna mensagem idêntica ("Credenciais inválidas.") para usuário inexistente
  * e senha incorreta.
@@ -22,7 +22,8 @@ final class AuthenticateCustomerUseCase
 {
     public function __construct(
         private readonly CustomerRepositoryInterface $repository
-    ) {}
+    ) {
+    }
 
     public function execute(LoginInputDTO $input): LoginOutputDTO
     {

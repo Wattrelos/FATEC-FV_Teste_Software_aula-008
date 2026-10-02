@@ -54,6 +54,7 @@ final class AuthenticateCustomerUseCaseTest extends TestCase
     {
         // Regra OWASP: mensagens para usuário não cadastrado e senha incorreta DEVEM ser idênticas
         $msgUsuarioInexistente = null;
+
         try {
             $this->useCase->execute(new LoginInputDTO("desconhecido@teste.com", "QualquerSenha"));
         } catch (DomainException $e) {
@@ -61,6 +62,7 @@ final class AuthenticateCustomerUseCaseTest extends TestCase
         }
 
         $msgSenhaIncorreta = null;
+
         try {
             $this->useCase->execute(new LoginInputDTO("usuario@teste.com", "SenhaIncorreta"));
         } catch (DomainException $e) {

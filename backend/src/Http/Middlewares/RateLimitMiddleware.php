@@ -23,7 +23,8 @@ final class RateLimitMiddleware implements MiddlewareInterface
     public function __construct(
         private readonly int $maxAttempts = 5,
         private readonly int $decaySeconds = 60
-    ) {}
+    ) {
+    }
 
     public static function reset(): void
     {
@@ -62,20 +63,21 @@ final class RateLimitMiddleware implements MiddlewareInterface
             } else {
                 // Janela expirada, reinicia
                 self::$storage[$clientIp] = [
-                    'count'      => 1,
+                    'count' => 1,
                     'reset_time' => $now + $this->decaySeconds,
                 ];
             }
         } else {
             self::$storage[$clientIp] = [
-                'count'      => 1,
+                'count' => 1,
                 'reset_time' => $now + $this->decaySeconds,
             ];
         }
 
         $response = $handler->handle($request);
 
-        $remaining = max(0, $this->maxAttempts - (self::$storage[$clientIp]['count'] ?? 1));
+        $remaining = max(0, $this->maxAttempts - self::$storage[$clientIp]['count']);
+
         return $response
             ->withHeader('X-RateLimit-Limit', (string) $this->maxAttempts)
             ->withHeader('X-RateLimit-Remaining', (string) $remaining);

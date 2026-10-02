@@ -70,6 +70,7 @@ final class InMemoryCustomerRepository implements CustomerRepositoryInterface
                 return $customer;
             }
         }
+
         return null;
     }
 
@@ -79,6 +80,7 @@ final class InMemoryCustomerRepository implements CustomerRepositoryInterface
             $customer->setId($this->nextId++);
         }
         $this->customers[$customer->getId()] = $customer;
+
         return $customer;
     }
 

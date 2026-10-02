@@ -33,7 +33,7 @@ final class CsrfProtectionTest extends TestCase
             ->withHeader('Accept', 'application/json');
 
         $request->getBody()->write((string) json_encode([
-            'email'    => 'usuario@teste.com',
+            'email' => 'usuario@teste.com',
             'password' => 'Senha@123',
         ]));
 
@@ -57,7 +57,7 @@ final class CsrfProtectionTest extends TestCase
             ->withHeader('X-CSRF-Token', 'token_malicioso_forjado');
 
         $request->getBody()->write((string) json_encode([
-            'email'    => 'usuario@teste.com',
+            'email' => 'usuario@teste.com',
             'password' => 'Senha@123',
         ]));
 
@@ -82,7 +82,7 @@ final class CsrfProtectionTest extends TestCase
             ->withHeader('X-CSRF-Token', $token);
 
         $request->getBody()->write((string) json_encode([
-            'email'    => 'usuario@teste.com',
+            'email' => 'usuario@teste.com',
             'password' => 'Senha@123',
         ]));
 

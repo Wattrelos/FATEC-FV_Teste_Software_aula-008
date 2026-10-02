@@ -15,7 +15,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 /**
  * Controller/Action para processamento de login.
- * 
+ *
  * Implementa medidas de segurança recomendadas pela OWASP:
  * - session_regenerate_id(true) para proteção contra Session Fixation.
  * - Mensagens genéricas para evitar enumeração de contas.
@@ -27,7 +27,8 @@ final class LoginAction
     public function __construct(
         private readonly AuthenticateCustomerUseCase $useCase,
         private readonly ?SecurityLogger $logger = null
-    ) {}
+    ) {
+    }
 
 
     public function __invoke(Request $request, Response $response): Response
@@ -74,24 +75,23 @@ final class LoginAction
 
             $this->logger?->info('Autenticação bem-sucedida', [
                 'customer_id' => $output->customerId,
-                'email'       => $output->email,
+                'email' => $output->email,
             ]);
 
             return JsonResponder::success($response, [
-                'user'         => [
-                    'id'    => $output->customerId,
-                    'name'  => $output->fullName,
+                'user' => [
+                    'id' => $output->customerId,
+                    'name' => $output->fullName,
                     'email' => $output->email,
                 ],
-                'redirectUrl'  => '/dashboard.html',
-                'message'      => 'Login realizado com sucesso!'
+                'redirectUrl' => '/dashboard.html',
+                'message' => 'Login realizado com sucesso!',
             ], 200);
-
         } catch (InvalidArgumentException $e) {
             $this->logger?->warning('Tentativa de autenticação com dados inválidos', [
-                'email'    => $email,
+                'email' => $email,
                 'password' => $password,
-                'error'    => $e->getMessage(),
+                'error' => $e->getMessage(),
             ]);
 
             $accept = $request->getHeaderLine('Accept');
@@ -105,12 +105,11 @@ final class LoginAction
             }
 
             return JsonResponder::error($response, $e->getMessage(), 400);
-
         } catch (DomainException $e) {
             $this->logger?->warning('Falha de autenticação (credenciais recusadas)', [
-                'email'    => $email,
+                'email' => $email,
                 'password' => $password,
-                'error'    => $e->getMessage(),
+                'error' => $e->getMessage(),
             ]);
 
             $accept = $request->getHeaderLine('Accept');
@@ -125,6 +124,5 @@ final class LoginAction
 
             return JsonResponder::error($response, $e->getMessage(), 401);
         }
-
     }
 }

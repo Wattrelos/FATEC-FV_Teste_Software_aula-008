@@ -11,7 +11,7 @@ use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
 /**
  * Middleware para aplicação de Content Security Policy (CSP) e Cabeçalhos de Segurança HTTP.
- * 
+ *
  * Implementa Defesa em Profundidade:
  * - X-Content-Type-Options: nosniff
  * - X-Frame-Options: DENY (anti-clickjacking)

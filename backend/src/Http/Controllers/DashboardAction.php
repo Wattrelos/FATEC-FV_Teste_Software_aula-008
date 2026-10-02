@@ -32,8 +32,8 @@ final class DashboardAction
         return JsonResponder::success($response, [
             'authenticated' => true,
             'user' => [
-                'id'    => $_SESSION['customer_id'] ?? null,
-                'name'  => $_SESSION['customer_name'] ?? null,
+                'id' => $_SESSION['customer_id'] ?? null,
+                'name' => $_SESSION['customer_name'] ?? null,
                 'email' => $_SESSION['customer_email'] ?? null,
             ],
             'authenticated_at' => $_SESSION['authenticated_at'] ?? null,

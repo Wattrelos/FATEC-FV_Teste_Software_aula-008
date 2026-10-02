@@ -13,7 +13,7 @@ use Slim\Psr7\Response as SlimResponse;
 
 /**
  * Middleware para proteção contra Cross-Site Request Forgery (Anti-CSRF).
- * 
+ *
  * Implementa o Synchronizer Token Pattern:
  * - Gera um token criptograficamente seguro e armazena na sessão do usuário.
  * - Valida requisições mutativas (POST, PUT, DELETE, PATCH) contra o token de sessão.
@@ -46,6 +46,7 @@ final class CsrfMiddleware implements MiddlewareInterface
 
             if ($submittedToken === null || !hash_equals($sessionToken, $submittedToken)) {
                 $res = new SlimResponse();
+
                 return JsonResponder::error(
                     $res,
                     'Acesso negado: Token anti-CSRF inválido ou ausente.',

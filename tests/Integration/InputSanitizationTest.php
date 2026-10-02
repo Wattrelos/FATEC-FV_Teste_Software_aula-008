@@ -38,7 +38,7 @@ final class InputSanitizationTest extends TestCase
             ->withHeader('X-CSRF-Token', $this->csrfToken);
 
         $request->getBody()->write((string) json_encode([
-            'email'    => $xssPayload,
+            'email' => $xssPayload,
             'password' => 'Senha@123',
         ]));
 
@@ -61,7 +61,7 @@ final class InputSanitizationTest extends TestCase
             ->withHeader('X-CSRF-Token', $this->csrfToken);
 
         $request->getBody()->write((string) json_encode([
-            'email'    => 'usuario@teste.com',
+            'email' => 'usuario@teste.com',
             'password' => $sqlInjection,
         ]));
 
@@ -84,12 +84,12 @@ final class InputSanitizationTest extends TestCase
 
         // Payload com injeção de parâmetros adicionais maliciosos
         $request->getBody()->write((string) json_encode([
-            'email'         => 'usuario@teste.com',
-            'password'      => 'Senha@123',
-            'is_admin'      => true,
-            'role'          => 'superuser',
-            'credit_limit'  => 999999.00,
-            'status'        => false,
+            'email' => 'usuario@teste.com',
+            'password' => 'Senha@123',
+            'is_admin' => true,
+            'role' => 'superuser',
+            'credit_limit' => 999999.00,
+            'status' => false,
         ]));
 
         $response = $this->app->handle($request);

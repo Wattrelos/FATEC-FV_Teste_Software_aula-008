@@ -35,9 +35,9 @@ final class SecurityLogger
         $sanitizedMessage = $this->maskSensitiveText($message);
 
         $this->logs[] = [
-            'level'     => strtoupper($level),
-            'message'   => $sanitizedMessage,
-            'context'   => $sanitizedContext,
+            'level' => strtoupper($level),
+            'message' => $sanitizedMessage,
+            'context' => $sanitizedContext,
             'timestamp' => time(),
         ];
     }

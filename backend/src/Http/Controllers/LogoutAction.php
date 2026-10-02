@@ -38,8 +38,8 @@ final class LogoutAction
             '%s=deleted; expires=%s; Max-Age=0; path=%s; domain=%s; httponly',
             $sessionName,
             gmdate('D, d-M-Y H:i:s T', 1),
-            $cookieParams['path'] ?? '/',
-            $cookieParams['domain'] ?? ''
+            $cookieParams['path'],
+            $cookieParams['domain']
         );
 
         if (!$isJson) {

@@ -10,5 +10,6 @@ final readonly class LoginOutputDTO
         public int $customerId,
         public string $fullName,
         public string $email
-    ) {}
+    ) {
+    }
 }

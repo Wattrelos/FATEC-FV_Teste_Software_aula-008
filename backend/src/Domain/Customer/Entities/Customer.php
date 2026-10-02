@@ -18,7 +18,8 @@ final class Customer
         private Email $email,
         private PasswordHash $passwordHash,
         private bool $status = true
-    ) {}
+    ) {
+    }
 
     public static function create(
         string $fullName,

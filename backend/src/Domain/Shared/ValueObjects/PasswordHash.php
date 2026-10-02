@@ -18,6 +18,7 @@ final readonly class PasswordHash
     {
         if ($isAlreadyHashed) {
             $this->hash = $plainOrHash;
+
             return;
         }
 

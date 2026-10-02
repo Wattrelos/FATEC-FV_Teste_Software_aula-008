@@ -19,12 +19,12 @@ final class SecurityLoggerTest extends TestCase
     public function testDeveMascararSenhasEChavesSensiveisIniciaisEmContexto(): void
     {
         $contexto = [
-            'email'         => 'usuario@teste.com',
-            'password'      => 'SenhaUltraSecreta@123',
+            'email' => 'usuario@teste.com',
+            'password' => 'SenhaUltraSecreta@123',
             'plainPassword' => 'MinhaSenhaReal',
-            'token'         => 'jwt.token.secreto',
-            'api_key'       => 'sk_live_123456789',
-            'origem_ip'     => '192.168.1.1',
+            'token' => 'jwt.token.secreto',
+            'api_key' => 'sk_live_123456789',
+            'origem_ip' => '192.168.1.1',
         ];
 
         $mascarado = $this->logger->maskSensitiveData($contexto);
@@ -68,7 +68,7 @@ final class SecurityLoggerTest extends TestCase
         $senhaSecreta = 'SenhaPrivada@2026';
 
         $this->logger->warning('Falha de tentativa de login', [
-            'email'    => 'usuario@teste.com',
+            'email' => 'usuario@teste.com',
             'password' => $senhaSecreta,
         ]);
 

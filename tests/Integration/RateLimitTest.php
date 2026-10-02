@@ -11,7 +11,6 @@ use PHPUnit\Framework\TestCase;
 use Slim\App;
 use Slim\Psr7\Factory\ServerRequestFactory;
 
-
 final class RateLimitTest extends TestCase
 {
     private App $app;
@@ -42,7 +41,7 @@ final class RateLimitTest extends TestCase
                 ->withHeader('X-CSRF-Token', $this->csrfToken);
 
             $request->getBody()->write((string) json_encode([
-                'email'    => 'usuario@teste.com',
+                'email' => 'usuario@teste.com',
                 'password' => 'SenhaIncorreta' . $i,
             ]));
 
@@ -59,7 +58,7 @@ final class RateLimitTest extends TestCase
 
 
         $bloqueioRequest->getBody()->write((string) json_encode([
-            'email'    => 'usuario@teste.com',
+            'email' => 'usuario@teste.com',
             'password' => 'OutraTentativa',
         ]));
 

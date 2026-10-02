@@ -36,7 +36,7 @@ final class LoginActionTest extends TestCase
             ->withHeader('X-CSRF-Token', $this->csrfToken);
 
         $request->getBody()->write((string) json_encode([
-            'email'    => 'usuario@teste.com',
+            'email' => 'usuario@teste.com',
             'password' => 'Senha@123',
         ]));
 
@@ -59,7 +59,7 @@ final class LoginActionTest extends TestCase
             ->withHeader('X-CSRF-Token', $this->csrfToken);
 
         $request->getBody()->write((string) json_encode([
-            'email'    => 'usuario@teste.com',
+            'email' => 'usuario@teste.com',
             'password' => 'SenhaErrada',
         ]));
 
@@ -81,7 +81,7 @@ final class LoginActionTest extends TestCase
             ->withHeader('X-CSRF-Token', $this->csrfToken);
 
         $request->getBody()->write((string) json_encode([
-            'email'    => '',
+            'email' => '',
             'password' => '',
         ]));
 
@@ -94,8 +94,8 @@ final class LoginActionTest extends TestCase
         $request = (new ServerRequestFactory())
             ->createServerRequest('POST', '/login')
             ->withParsedBody([
-                'email'      => 'usuario@teste.com',
-                'password'   => 'Senha@123',
+                'email' => 'usuario@teste.com',
+                'password' => 'Senha@123',
                 'csrf_token' => $this->csrfToken,
             ]);
 

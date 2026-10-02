@@ -26,16 +26,18 @@ final class CustomerAuthMiddleware implements MiddlewareInterface
 
         if (!$customerId) {
             $accept = $request->getHeaderLine('Accept');
-            $isJson = str_contains($accept, 'application/json') 
+            $isJson = str_contains($accept, 'application/json')
                 || $request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest';
 
             if ($isJson) {
                 $res = new SlimResponse();
+
                 return JsonResponder::error($res, 'Acesso não autorizado. Sessão inválida ou expirada.', 401);
             }
 
             // Redirecionamento para o formulário de login
             $res = new SlimResponse();
+
             return $res
                 ->withHeader('Location', '/login.html')
                 ->withStatus(302);

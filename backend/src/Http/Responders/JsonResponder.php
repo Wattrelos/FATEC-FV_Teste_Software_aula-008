@@ -21,7 +21,7 @@ final class JsonResponder
     {
         return self::respond($response, [
             'success' => true,
-            'data'    => $data,
+            'data' => $data,
         ], $status);
     }
 
@@ -29,7 +29,7 @@ final class JsonResponder
     {
         $payload = [
             'success' => false,
-            'error'   => $message,
+            'error' => $message,
         ];
 
         if (!empty($errors)) {
