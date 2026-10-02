@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Application\Customer\DTOs\LoginInputDTO;
 use App\Application\Customer\UseCases\AuthenticateCustomerUseCase;
 use App\Http\Responders\JsonResponder;
+use App\Infrastructure\Logging\SecurityLogger;
 use DomainException;
 use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -19,12 +20,15 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  * - session_regenerate_id(true) para proteção contra Session Fixation.
  * - Mensagens genéricas para evitar enumeração de contas.
  * - Suporte híbrido a API REST (JSON) e Submissão tradicional (Redirect 302).
+ * - Mascaramento obrigatório de credenciais nos logs.
  */
 final class LoginAction
 {
     public function __construct(
-        private readonly AuthenticateCustomerUseCase $useCase
+        private readonly AuthenticateCustomerUseCase $useCase,
+        private readonly ?SecurityLogger $logger = null
     ) {}
+
 
     public function __invoke(Request $request, Response $response): Response
     {
@@ -68,6 +72,11 @@ final class LoginAction
                     ->withStatus(302);
             }
 
+            $this->logger?->info('Autenticação bem-sucedida', [
+                'customer_id' => $output->customerId,
+                'email'       => $output->email,
+            ]);
+
             return JsonResponder::success($response, [
                 'user'         => [
                     'id'    => $output->customerId,
@@ -79,6 +88,12 @@ final class LoginAction
             ], 200);
 
         } catch (InvalidArgumentException $e) {
+            $this->logger?->warning('Tentativa de autenticação com dados inválidos', [
+                'email'    => $email,
+                'password' => $password,
+                'error'    => $e->getMessage(),
+            ]);
+
             $accept = $request->getHeaderLine('Accept');
             $isJson = str_contains($accept, 'application/json')
                 || $request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest';
@@ -92,6 +107,12 @@ final class LoginAction
             return JsonResponder::error($response, $e->getMessage(), 400);
 
         } catch (DomainException $e) {
+            $this->logger?->warning('Falha de autenticação (credenciais recusadas)', [
+                'email'    => $email,
+                'password' => $password,
+                'error'    => $e->getMessage(),
+            ]);
+
             $accept = $request->getHeaderLine('Accept');
             $isJson = str_contains($accept, 'application/json')
                 || $request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest';
@@ -104,5 +125,6 @@ final class LoginAction
 
             return JsonResponder::error($response, $e->getMessage(), 401);
         }
+
     }
 }

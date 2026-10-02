@@ -38,6 +38,7 @@
           <label for="password">Senha</label>
           <input type="password" id="password" name="password" data-testid="input-password" placeholder="Sua senha" autocomplete="current-password">
         </div>
+        <input type="hidden" name="csrf_token" id="csrf_token" data-testid="input-csrf" value="">
         <button type="submit" id="submit-btn" data-testid="button-submit">Entrar</button>
       </form>
     </section>
@@ -59,6 +60,28 @@
     const dashboard = document.getElementById("dashboard");
     const userDisplay = document.getElementById("user-display");
     const logoutBtn = document.getElementById("logout-btn");
+    const csrfInput = document.getElementById("csrf_token");
+
+    let currentCsrfToken = "";
+
+    async function carregarCsrfToken() {
+      if (window.location.protocol.startsWith("http")) {
+        try {
+          const response = await fetch("/api/csrf-token");
+          const data = await response.json();
+          if (data.success && data.data?.csrf_token) {
+            currentCsrfToken = data.data.csrf_token;
+            if (csrfInput) {
+              csrfInput.value = currentCsrfToken;
+            }
+          }
+        } catch (e) {
+          console.warn("CSRF token fetch error:", e);
+        }
+      }
+    }
+    carregarCsrfToken();
+
 
     function showFeedback(type, text) {
       feedback.className = "message " + type;
@@ -90,10 +113,12 @@
             headers: {
               "Content-Type": "application/json",
               "Accept": "application/json",
-              "X-Requested-With": "XMLHttpRequest"
+              "X-Requested-With": "XMLHttpRequest",
+              "X-CSRF-Token": currentCsrfToken
             },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, password, csrf_token: currentCsrfToken })
           });
+
 
           const data = await response.json();
 

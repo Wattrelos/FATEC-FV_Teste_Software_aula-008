@@ -5,20 +5,29 @@ declare(strict_types=1);
 namespace Tests\Integration;
 
 use App\AppBootstrap;
+use App\Http\Middlewares\CsrfMiddleware;
 use App\Http\Middlewares\RateLimitMiddleware;
 use PHPUnit\Framework\TestCase;
 use Slim\App;
 use Slim\Psr7\Factory\ServerRequestFactory;
 
+
 final class RateLimitTest extends TestCase
 {
     private App $app;
+    private string $csrfToken;
 
     protected function setUp(): void
     {
         $this->app = AppBootstrap::create();
+        if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
+            @session_start();
+        }
+        $this->csrfToken = bin2hex(random_bytes(32));
+        $_SESSION[CsrfMiddleware::SESSION_KEY] = $this->csrfToken;
         RateLimitMiddleware::reset();
     }
+
 
     public function testDeveBloquearAtaqueDeForcaBrutaAposLimiteDeTentativas(): void
     {
@@ -29,7 +38,8 @@ final class RateLimitTest extends TestCase
             $request = $serverRequestFactory
                 ->createServerRequest('POST', '/api/login', ['REMOTE_ADDR' => '192.168.1.100'])
                 ->withHeader('Content-Type', 'application/json')
-                ->withHeader('Accept', 'application/json');
+                ->withHeader('Accept', 'application/json')
+                ->withHeader('X-CSRF-Token', $this->csrfToken);
 
             $request->getBody()->write((string) json_encode([
                 'email'    => 'usuario@teste.com',
@@ -44,7 +54,9 @@ final class RateLimitTest extends TestCase
         $bloqueioRequest = $serverRequestFactory
             ->createServerRequest('POST', '/api/login', ['REMOTE_ADDR' => '192.168.1.100'])
             ->withHeader('Content-Type', 'application/json')
-            ->withHeader('Accept', 'application/json');
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('X-CSRF-Token', $this->csrfToken);
+
 
         $bloqueioRequest->getBody()->write((string) json_encode([
             'email'    => 'usuario@teste.com',

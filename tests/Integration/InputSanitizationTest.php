@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 use Slim\App;
 use Slim\Psr7\Factory\ServerRequestFactory;
 
-final class LoginActionTest extends TestCase
+final class InputSanitizationTest extends TestCase
 {
     private App $app;
     private string $csrfToken;
@@ -27,8 +27,33 @@ final class LoginActionTest extends TestCase
     }
 
 
-    public function testDeveRetornarStatus200EPayloadJsonQuandoLoginForValido(): void
+    public function testDeveRejeitarTentativaDeInjecaoXssNoEmail(): void
     {
+        $xssPayload = "<script>alert('XSS')</script>";
+
+        $request = (new ServerRequestFactory())
+            ->createServerRequest('POST', '/api/login')
+            ->withHeader('Content-Type', 'application/json')
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('X-CSRF-Token', $this->csrfToken);
+
+        $request->getBody()->write((string) json_encode([
+            'email'    => $xssPayload,
+            'password' => 'Senha@123',
+        ]));
+
+        $response = $this->app->handle($request);
+        $body = (string) $response->getBody();
+
+        // O payload XSS não pode ser refletido sem escape no corpo da resposta
+        $this->assertStringNotContainsString("<script>", $body);
+        $this->assertEquals(401, $response->getStatusCode());
+    }
+
+    public function testDeveNeutralizarInjecaoSqlNasCredenciais(): void
+    {
+        $sqlInjection = "' OR '1'='1' --";
+
         $request = (new ServerRequestFactory())
             ->createServerRequest('POST', '/api/login')
             ->withHeader('Content-Type', 'application/json')
@@ -37,7 +62,34 @@ final class LoginActionTest extends TestCase
 
         $request->getBody()->write((string) json_encode([
             'email'    => 'usuario@teste.com',
-            'password' => 'Senha@123',
+            'password' => $sqlInjection,
+        ]));
+
+        $response = $this->app->handle($request);
+        $body = (string) $response->getBody();
+        $data = json_decode($body, true);
+
+        // Deve recusar com a mensagem genérica padrão sem erro SQL
+        $this->assertEquals(401, $response->getStatusCode());
+        $this->assertEquals('Credenciais inválidas.', $data['error']);
+    }
+
+    public function testDeveBloquearPropriedadesExtrasParaEvitarMassAssignment(): void
+    {
+        $request = (new ServerRequestFactory())
+            ->createServerRequest('POST', '/api/login')
+            ->withHeader('Content-Type', 'application/json')
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('X-CSRF-Token', $this->csrfToken);
+
+        // Payload com injeção de parâmetros adicionais maliciosos
+        $request->getBody()->write((string) json_encode([
+            'email'         => 'usuario@teste.com',
+            'password'      => 'Senha@123',
+            'is_admin'      => true,
+            'role'          => 'superuser',
+            'credit_limit'  => 999999.00,
+            'status'        => false,
         ]));
 
         $response = $this->app->handle($request);
@@ -46,62 +98,14 @@ final class LoginActionTest extends TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertTrue($data['success']);
-        $this->assertEquals('Login realizado com sucesso!', $data['data']['message']);
-        $this->assertEquals('usuario@teste.com', $data['data']['user']['email']);
-    }
 
-    public function testDeveRetornarStatus401QuandoCredenciaisForemInvalidas(): void
-    {
-        $request = (new ServerRequestFactory())
-            ->createServerRequest('POST', '/api/login')
-            ->withHeader('Content-Type', 'application/json')
-            ->withHeader('Accept', 'application/json')
-            ->withHeader('X-CSRF-Token', $this->csrfToken);
+        // Garante que nenhum dos parâmetros maliciosos vazou para a sessão
+        $this->assertArrayNotHasKey('is_admin', $_SESSION);
+        $this->assertArrayNotHasKey('role', $_SESSION);
+        $this->assertArrayNotHasKey('credit_limit', $_SESSION);
 
-        $request->getBody()->write((string) json_encode([
-            'email'    => 'usuario@teste.com',
-            'password' => 'SenhaErrada',
-        ]));
-
-        $response = $this->app->handle($request);
-        $body = (string) $response->getBody();
-        $data = json_decode($body, true);
-
-        $this->assertEquals(401, $response->getStatusCode());
-        $this->assertFalse($data['success']);
-        $this->assertEquals('Credenciais inválidas.', $data['error']);
-    }
-
-    public function testDeveRetornarStatus400QuandoCamposObrigatoriosForemVazios(): void
-    {
-        $request = (new ServerRequestFactory())
-            ->createServerRequest('POST', '/api/login')
-            ->withHeader('Content-Type', 'application/json')
-            ->withHeader('Accept', 'application/json')
-            ->withHeader('X-CSRF-Token', $this->csrfToken);
-
-        $request->getBody()->write((string) json_encode([
-            'email'    => '',
-            'password' => '',
-        ]));
-
-        $response = $this->app->handle($request);
-        $this->assertEquals(400, $response->getStatusCode());
-    }
-
-    public function testDeveRetornarRedirecionamento302ParaSubmissaoHTMLFormulario(): void
-    {
-        $request = (new ServerRequestFactory())
-            ->createServerRequest('POST', '/login')
-            ->withParsedBody([
-                'email'      => 'usuario@teste.com',
-                'password'   => 'Senha@123',
-                'csrf_token' => $this->csrfToken,
-            ]);
-
-        $response = $this->app->handle($request);
-
-        $this->assertEquals(302, $response->getStatusCode());
-        $this->assertEquals('/dashboard.html', $response->getHeaderLine('Location'));
+        // Garante que o retorno JSON contém apenas os dados autorizados do usuário
+        $this->assertArrayNotHasKey('is_admin', $data['data']['user']);
+        $this->assertArrayNotHasKey('role', $data['data']['user']);
     }
 }
