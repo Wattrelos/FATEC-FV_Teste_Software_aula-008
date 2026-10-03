@@ -117,3 +117,64 @@ O arquivo contempla **6 cenários completos**, cobrindo o fluxo feliz, regras de
 
 > [!NOTE]
 > Todos esses 6 cenários possuem seus respectivos steps implementados em [login_steps.py](/features/steps/login_steps.py) e são executados automaticamente via **Behave** (além das suítes do **PHPUnit** e do teste E2E do **Playwright** em [test_playwright_telas.py](/test_playwright_telas.py)).
+
+
+# Estrutura de Arquivos
+
+O mapa de pastas [file_structure_diagram.puml](/docs/architecture/file_structure_diagram.puml) foi adaptado para representar com precisão a estrutura real deste projeto.
+
+### Principais ajustes realizados:
+1. **Remoção de módulos não existentes:** Foram removidas pastas e módulos de catálogo, pedidos, POS, e-commerce, layouts Twig e diretórios de um modelo anterior não utilizado aqui.
+2. **Mapeamento do Backend:**
+   - [backend/config/](/backend/config): Dependências PHP-DI e rotas do Slim Framework.
+   - [backend/src/Domain/](/backend/src/Domain): Entidade `Customer`, interface de repositório e os Value Objects (`Email`, `PasswordHash`).
+   - [backend/src/Application/](/backend/src/Application): DTOs e caso de uso `AuthenticateCustomerUseCase`.
+   - [backend/src/Infrastructure/](/backend/src/Infrastructure): `InMemoryCustomerRepository`, `SessionConfig` e `SecurityLogger`.
+   - [backend/src/Http/](/backend/src/Http): Actions (`LoginAction`, `LogoutAction`, `CsrfTokenAction`, `DashboardAction`), Middlewares (`Csrf`, `Auth`, `RateLimit`, `SecurityHeaders`) e `JsonResponder`.
+3. **Mapeamento da Webroot Pública:**
+   - [public/](/public): `index.php`, `login.html`, `dashboard.html` e `resultado.html`.
+4. **Mapeamento da Pirâmide de Testes e BDD:**
+   - [tests/](/tests): Suíte completa do PHPUnit dividida em testes de `Unit/` (Domain, Application, Infrastructure) e `Integration/` (Middlewares, CSRF, RateLimit, Actions).
+   - [features/](/features): BDD Gherkin (`login.feature`) e Steps em Python (`login_steps.py`).
+   - [test_playwright_telas.py](/test_playwright_telas.py): Testes E2E visuais com Playwright.
+5. **Documentação e Ferramental:**
+   - Adicionadas referências a [docs/](/docs), [material_de_apoio/](/material_de_apoio), scripts de execução e arquivos de configuração de análise estática e CI/CD.
+
+
+
+
+# Diagrama de Arquitetura
+
+O diagrama de arquitetura [PlantUML](/docs/architecture/Architecture-Diagram.puml) e [SVG](/docs/architecture/Architecture-Diagram.svg) foi adaptado para representar exclusivamente os componentes e fluxos do projeto:
+
+### O que foi sintetizado e alinhado ao código real:
+
+1. **Camada 0 - Clients & Delivery:**
+   - **Frontend:** [login.html](/public/login.html), [dashboard.html](/public/dashboard.html) e [resultado.html](/public/resultado.html).
+   - **Entrypoint:** [public/index.php](/public/index.php) conectando ao [AppBootstrap](/backend/src/AppBootstrap.php), rotas do Slim e [PHP-DI Container](/backend/config/dependencies.php).
+
+2. **Camada 1 - Pipeline de Middlewares PSR-15:**
+   - `SecurityHeadersMiddleware` (CSP, HSTS, X-Frame-Options, X-Content-Type-Options).
+   - `CsrfMiddleware` (proteção de formulários e APIs).
+   - `RateLimitMiddleware` (mitigação contra força bruta: 5 tentativas / 60s).
+   - `CustomerAuthMiddleware` (proteção das rotas privadas `/api/dashboard` e `/api/me`).
+
+3. **Camada 2 - Apresentação (Padrão ADR):**
+   - Action Controllers reais: `LoginAction`, `LogoutAction`, `CsrfTokenAction` e `DashboardAction`.
+   - `JsonResponder` padronizando respostas JSON (PSR-7).
+
+4. **Camada 3 - Aplicação:**
+   - Casos de uso e DTOs reais: `AuthenticateCustomerUseCase`, `LoginInputDTO` e `LoginOutputDTO`.
+
+5. **Camada 4 - Domínio Puro (Clean Core):**
+   - Entidade: `Customer`.
+   - Value Objects imutáveis: `Email` e `PasswordHash`.
+   - Contrato de Porta (DIP): `CustomerRepositoryInterface`.
+
+6. **Camada 5 - Infraestrutura:**
+   - `InMemoryCustomerRepository` (implementação do contrato de repositório).
+   - `SessionConfig` (controle do ciclo de vida, cookies `HttpOnly`, `SameSite=Strict` e regeneração de ID).
+   - `SecurityLogger` (auditoria com sanitização e mascaramento de dados sensíveis).
+
+7. **Fluxos e Relações:**
+   - Mapeamento explícito de injeção de dependência via PHP-DI, proteção de rotas, ciclo do login e inversão de dependência (DIP). Removidos bancos de dados pesados, filas RabbitMQ e componentes de e-commerce/POS que não pertenciam a esta atividade.

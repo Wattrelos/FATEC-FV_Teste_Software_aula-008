@@ -1,0 +1,122 @@
+@startfiles
+.
+├── .github/                                    # 🤖 Automação e Workflows CI/CD
+│   └── workflows/                              # ⚙️ Pipelines do GitHub Actions
+│       └── main.yml                            # 🚀 Pipeline de Integração Contínua (CI)
+│
+├── backend/                                    # 📁 Backend (Clean Architecture / DDD Modular / PSR-15)
+│   ├── config/                                 # 📂 Configurações centralizadas da aplicação
+│   │   ├── dependencies.php                    # 📦 Injeção de Dependências PSR-11 (PHP-DI)
+│   │   └── routes.php                          # 🚦 Definição de rotas da aplicação (Slim Framework)
+│   │
+│   └── src/                                    # 🏛️ Código-Fonte Autoloaded (Namespace: App\)
+│       ├── AppBootstrap.php                    # 🚀 Bootstrap da aplicação, rotas e container
+│       │
+│       ├── Domain/                             # 💎 Camada Enterprise (Regras de Negócio Puras)
+│       │   ├── Customer/                       # 👤 Bounded Context: Clientes
+│       │   │   ├── Entities/                   # 🏛️ Entidades de Domínio
+│       │   │   │   └── Customer.php            # 👤 Entidade Customer (ID, Nome, Email, Status)
+│       │   │   └── Repositories/               # 📜 Contratos de Repositório
+│       │   │       └── CustomerRepositoryInterface.php
+│       │   └── Shared/                         # 🌐 Elementos compartilhados do domínio
+│       │       └── ValueObjects/               # 💎 Objetos de Valor
+│       │           ├── Email.php               # 📧 Validação e encapsulamento de E-mail
+│       │           └── PasswordHash.php        # 🔑 Manipulação e verificação de Hash de Senha
+│       │
+│       ├── Application/                        # 💼 Camada de Aplicação (Casos de Uso e DTOs)
+│       │   └── Customer/                       # 👤 Casos de Uso de Clientes
+│       │       ├── DTOs/                       # 📋 Data Transfer Objects
+│       │       │   ├── LoginInputDTO.php       # 📥 DTO de entrada para login
+│       │       │   └── LoginOutputDTO.php      # 📤 DTO de saída do login (sucesso/falha/sessão)
+│       │       └── UseCases/                   # ⚙️ Casos de Uso
+│       │           └── AuthenticateCustomerUseCase.php # 🔐 Orquestração da autenticação e regras
+│       │
+│       ├── Infrastructure/                     # 🔌 Camada de Infraestrutura e Adaptadores
+│       │   ├── Logging/                        # 📝 Serviços de Log
+│       │   │   └── SecurityLogger.php          # 🛡️ Registro de eventos de segurança/auditoria
+│       │   ├── Persistence/                    # 🗄️ Acesso a Dados
+│       │   │   └── InMemoryCustomerRepository.php # 💾 Repositório em memória para testes/simulação
+│       │   └── Session/                        # 🍪 Gerenciamento de Sessão
+│       │       └── SessionConfig.php           # 🔒 Configurações e ciclo de vida de sessão segura
+│       │
+│       └── Http/                               # 🌐 Camada HTTP e Apresentação (PSR-7 / PSR-15)
+│           ├── Controllers/                    # 🎮 Action Controllers desacoplados
+│           │   ├── CsrfTokenAction.php         # 🛡️ Emissão de token Anti-CSRF
+│           │   ├── DashboardAction.php         # 📊 Acesso e validação da área autenticada
+│           │   ├── LoginAction.php             # 🔑 Processamento da autenticação
+│           │   └── LogoutAction.php            # 🚪 Encerramento de sessão
+│           ├── Middlewares/                    # 🧱 Pipeline de Middlewares PSR-15
+│           │   ├── CsrfMiddleware.php          # 🛡️ Validação de tokens CSRF
+│           │   ├── CustomerAuthMiddleware.php  # 🔐 Barreira de autenticação do cliente
+│           │   ├── RateLimitMiddleware.php     # ⏳ Mitigação de brute force / rate limiting
+│           │   └── SecurityHeadersMiddleware.php # 🔒 Cabeçalhos HTTP de segurança (OWASP)
+│           └── Responders/                     # 🎯 Padronização de respostas
+│               └── JsonResponder.php           # 📄 Formatação padronizada JSON
+│
+├── docs/                                       # 📚 Central Unificada de Documentação do Projeto
+│   ├── architecture/                           # 🏗️ Visão arquitetural, ADRs e diagramas técnicos
+│   │   ├── adr/                                # 📝 Architecture Decision Records
+│   │   │   └── 0001-arquitetura.md             # 📝 Registro de decisão arquitetural do módulo
+│   │   ├── Architecture-Diagram.puml           # 🗺️ Diagrama de componentes e fluxo de arquitetura
+│   │   ├── file_structure_diagram.puml         # 🗺️ Mapa estrutural de arquivos e diretórios
+│   │   └── guia-preparacao-ambiente.md         # 📘 Guia de setup e preparação do ambiente
+│   ├── quality_and_testing/                    # 🧪 Documentação de Qualidade e Testes
+│   │   └── Ratification_and_Opinions/          # 📋 Pareceres e homologações técnicas
+│   │       └── Interface_and_Usability/        # 🎨 Usabilidade e validações visuais
+│   │           └── login_tests.md              # 📝 Registro de validação dos testes de login
+│   ├── futuras-implementações.md               # 🔮 Roadmap e melhorias futuras mapeadas
+│   └── introduction-pentest.md                 # 🛡️ Guia e notas de testes de intrusão/segurança
+│
+├── features/                                   # 🥒 Especificações BDD (Gherkin / Behave)
+│   ├── login.feature                           # 📜 Cenários BDD da funcionalidade de login
+│   └── steps/                                  # ⚙️ Definições de passos (Step Definitions)
+│       └── login_steps.py                      # 🐍 Implementação automatizada dos steps via Playwright
+│
+├── material_de_apoio/                          # 📎 Materiais didáticos e referências de apoio
+│   ├── Laboratorio_Teste_de_Software.pdf       # 📄 Roteiro e apostila do laboratório
+│   ├── Registro_Execucao_Testes_Login.xlsx     # 📊 Planilha de evidências e resultados de testes
+│   ├── DLL_Dependencia.png                     # 🖼️ Evidência de dependências
+│   ├── cenario_automatizado.png                # 🖼️ Evidência de cenários automatizados
+│   └── comportamento.png                       # 🖼️ Evidência de comportamento do sistema
+│
+├── public/                                     # 🌐 Webroot Pública (Document Root do Nginx/Apache)
+│   ├── index.php                               # 🚀 Front Controller único da aplicação
+│   ├── login.html                              # 🖥️ Interface de Login com validação e CSRF
+│   ├── dashboard.html                          # 🖥️ Interface de Dashboard/Sucesso pós-login
+│   └── resultado.html                          # 🖥️ Interface de Resposta técnica e diagnóstico
+│
+├── tests/                                      # 🧪 Pirâmide de Testes Automatizados (PHPUnit)
+│   ├── bootstrap.php                           # ⚙️ Inicialização do ambiente de testes
+│   ├── Unit/                                   # 🔬 Testes Unitários (Regras de Domínio e Infra)
+│   │   ├── Domain/                             # 💎 Testes de Value Objects e Entidades
+│   │   │   ├── EmailTest.php                   # 📧 Testes do Value Object Email
+│   │   │   └── PasswordHashTest.php            # 🔑 Testes do Value Object PasswordHash
+│   │   ├── Application/                        # 💼 Testes de Casos de Uso
+│   │   │   └── AuthenticateCustomerUseCaseTest.php # ⚙️ Testes do caso de uso de autenticação
+│   │   └── Infrastructure/                     # 🔌 Testes de adaptadores de infraestrutura
+│   │       ├── SecurityLoggerTest.php          # 📝 Testes de logs de segurança
+│   │       └── SessionConfigTest.php           # 🍪 Testes de gestão de sessão
+│   └── Integration/                            # 🧩 Testes de Integração (Middlewares, Actions, Rotas)
+│       ├── CsrfProtectionTest.php              # 🛡️ Teste de integração de proteção CSRF
+│       ├── CustomerAuthMiddlewareTest.php      # 🔐 Teste de middleware de autenticação
+│       ├── InputSanitizationTest.php           # 🧼 Teste de higienização de inputs
+│       ├── LoginActionTest.php                 # 🔑 Teste de integração da rota de login
+│       ├── LogoutActionTest.php                # 🚪 Teste de integração da rota de logout
+│       ├── RateLimitTest.php                   # ⏳ Teste de limitação de taxa de requisições
+│       └── SecurityHeadersTest.php             # 🔒 Teste dos cabeçalhos de segurança HTTP
+│
+├── .php-cs-fixer.dist.php                      # 🎨 Regras de formatação de código PSR-12
+├── composer.json                               # 📦 Manifesto de dependências e autoloader PSR-4
+├── composer.lock                               # 🔒 Lockfile de versões das dependências PHP
+├── executar_testes.bat                         # 🪟 Script de execução de testes para Windows
+├── executar_testes.sh                          # 🐧 Script de automação da suíte completa de testes
+├── install-test-tools.sh                       # 🛠️ Script de instalação e configuração de ferramentas
+├── package.json                                # 📦 Manifesto de dependências Node/Playwright
+├── phpstan.neon                                # 🧐 Configurações do analisador estático PHPStan
+├── phpunit.xml                                 # 🧪 Configurações da suíte de testes do PHPUnit
+├── README.md                                   # 📖 Documentação principal do repositório
+├── rector.php                                  # 🔄 Regras de refatoração e modernização de código
+├── requirements.txt                            # 🐍 Dependências Python (Behave, Playwright)
+├── ROTEIRO_ATIVIDADE.md                        # 📋 Roteiro guiado de execução da atividade
+└── test_playwright_telas.py                    # 🎭 Script de automação e validação E2E visual
+@endfiles

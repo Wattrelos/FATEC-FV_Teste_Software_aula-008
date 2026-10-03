@@ -14,14 +14,14 @@
 
 #### 2. Criação dos Arquivos de Configuração do Ciclo Fechado
 O script agora assegura a existência dos arquivos de configuração essenciais:
-* [phpstan.neon](file:///var/www/html/teste-software/Aula-08/phpstan.neon): Análise estática no nível 5 para `backend/src`.
-* [.php-cs-fixer.dist.php](file:///var/www/html/teste-software/Aula-08/.php-cs-fixer.dist.php): Regras PSR-12 com suporte explícito ao PHP 8.4 (`setUnsupportedPhpVersionAllowed(true)`), eliminando qualquer pergunta interativa no terminal.
-* [rector.php](file:///var/www/html/teste-software/Aula-08/rector.php): Regras de modernização de código, *dead code* e qualidade para PHP 8.4.
+* [phpstan.neon](/phpstan.neon): Análise estática no nível 5 para `backend/src`.
+* [.php-cs-fixer.dist.php](/.php-cs-fixer.dist.php): Regras PSR-12 com suporte explícito ao PHP 8.4 (`setUnsupportedPhpVersionAllowed(true)`), eliminando qualquer pergunta interativa no terminal.
+* [rector.php](/rector.php): Regras de modernização de código, *dead code* e qualidade para PHP 8.4.
 
 #### 3. Automação do Ambiente E2E (Python Playwright + Behave)
 * Cria automaticamente o `.venv` isolado, instala o `requirements.txt` e baixa os binários do Chromium com `playwright install chromium`.
 
-#### 4. Novos Atalhos no [composer.json](file:///var/www/html/teste-software/Aula-08/composer.json)
+#### 4. Novos Atalhos no [composer.json](/composer.json)
 Configuramos os scripts do Composer para facilitar o uso tanto por você quanto por agentes de IA:
 * `composer self-healing` → Executa o ciclo fechado em sequência: **Formatação (PSR-12) ➔ Análise Estática (PHPStan) ➔ Testes (Pest)**.
 * `composer test` → Roda os testes com Pest PHP.
