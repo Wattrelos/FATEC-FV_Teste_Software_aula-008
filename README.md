@@ -94,3 +94,26 @@ Abaixo estão os principais testes de segurança para cenários de login, agrupa
 
 * Autenticação de Múltiplos Fatores (MFA/2FA): Testar se é possível burlar a tela do segundo fator acessando diretamente URLs internas ou forçando parâmetros na requisição.
 * Fluxo de "Esqueci minha Senha": Verificar se os links de redefinição expiram rapidamente, são de uso único e se os tokens enviados por e-mail/SMS são gerados de forma imprevisível (criptograficamente seguros).
+
+
+# Todos os cenários de especificação BDD da funcionalidade de login deste módulo estão descritos no arquivo [login.feature](/features/login.feature).
+
+O arquivo contempla **6 cenários completos**, cobrindo o fluxo feliz, regras de segurança, validação de campos e encerramento de sessão:
+
+1. **`Login realizado com sucesso`** (`@sucesso @login_valido`):
+   - Valida credenciais válidas (`usuario@teste.com` / `Senha@123`), feedback de sucesso e exibição do painel principal/dashboard.
+2. **`Tentativa de login com senha incorreta`** (`@falha @seguranca @anti_enumeracao`):
+   - Valida mensagem genérica anti-enumeração (*"Credenciais inválidas."*).
+3. **`Tentativa de login com e-mail não cadastrado`** (`@falha @seguranca @anti_enumeracao`):
+   - Valida a mesma mensagem anti-enumeração (*"Credenciais inválidas."*).
+4. **`Tentativa de login com conta desativada`** (`@falha @conta_inativa`):
+   - Valida bloqueio por status da conta (*"Conta de cliente desativada."*).
+5. **`Tentativa de envio com campos obrigatórios vazios`** (`@falha @validacao_campos`):
+   - Valida alerta de validação client-side/inline (*"Preencha todos os campos obrigatórios."*).
+6. **`Encerramento de sessão (Logout) com sucesso`** (`@logout @sessao`):
+   - Valida o fluxo de saída da sessão e retorno ao formulário de login.
+
+---
+
+> [!NOTE]
+> Todos esses 6 cenários possuem seus respectivos steps implementados em [login_steps.py](/features/steps/login_steps.py) e são executados automaticamente via **Behave** (além das suítes do **PHPUnit** e do teste E2E do **Playwright** em [test_playwright_telas.py](/test_playwright_telas.py)).

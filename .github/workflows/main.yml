@@ -2,9 +2,11 @@ name: CI / Quality & Test Pipeline
 
 on:
   push:
-    branches: [ "main", "master" ]
+    # O workflow será executado quando houver push no branch "test" ou "master", ao invés de toda a vez que se fizer push em qualquer branch.
+    branches: [ "test", "master" ]
   pull_request:
-    branches: [ "main", "master" ]
+    # O workflow será executado quando houver pull request no branch "test" ou "master"
+    branches: [ "test", "master" ]
   workflow_dispatch:
 
 permissions:

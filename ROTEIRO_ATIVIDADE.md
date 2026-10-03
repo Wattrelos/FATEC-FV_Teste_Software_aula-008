@@ -12,27 +12,27 @@ As telas foram construídas com design moderno em *dark glassmorphism*, micro-an
 
 | Tela | Arquivo | Descrição e Recursos |
 | :--- | :--- | :--- |
-| **Login** | [login.html](file:///var/www/html/teste-software/Aula-08/public/login.html) | Formulário com busca automática de token Anti-CSRF (`GET /api/v1/csrf-token`), validação instantânea, feedback inline acessível e modo híbrido (*live backend* ou offline). |
-| **Sucesso / Dashboard** | [dashboard.html](file:///var/www/html/teste-software/Aula-08/public/dashboard.html) | Tela exibida após autenticação bem-sucedida: exibe badge de sessão ativa (`session_regenerate_id`), nome do usuário (`#user-name`), e-mail (`#user-email`), status dos controles de segurança e botão de logout funcional (`#button-logout`). |
-| **Resposta / Erro / Bloqueio** | [resultado.html](file:///var/www/html/teste-software/Aula-08/public/resultado.html) | Tela técnica para simulações de resposta do servidor, apresentando código HTTP (ex: `401 Unauthorized`, `403 Forbidden`, `429 Too Many Requests`), explicação amigável, diagnóstico de mitigação OWASP e botão para retornar ao login. |
+| **Login** | [login.html](/public/login.html) | Formulário com busca automática de token Anti-CSRF (`GET /api/v1/csrf-token`), validação instantânea, feedback inline acessível e modo híbrido (*live backend* ou offline). |
+| **Sucesso / Dashboard** | [dashboard.html](/public/dashboard.html) | Tela exibida após autenticação bem-sucedida: exibe badge de sessão ativa (`session_regenerate_id`), nome do usuário (`#user-name`), e-mail (`#user-email`), status dos controles de segurança e botão de logout funcional (`#button-logout`). |
+| **Resposta / Erro / Bloqueio** | [resultado.html](/public/resultado.html) | Tela técnica para simulações de resposta do servidor, apresentando código HTTP (ex: `401 Unauthorized`, `403 Forbidden`, `429 Too Many Requests`), explicação amigável, diagnóstico de mitigação OWASP e botão para retornar ao login. |
 
 ---
 
 ### 2. Automação e Simulação no Playwright
 
-Criamos o script dedicado [test_playwright_telas.py](file:///var/www/html/teste-software/Aula-08/test_playwright_telas.py) cobrindo **5 fluxos ponta a ponta**:
+Criamos o script dedicado [test_playwright_telas.py](/test_playwright_telas.py) cobrindo **5 fluxos ponta a ponta**:
 
-1. **Etapa 1:** Acessa [login.html](file:///var/www/html/teste-software/Aula-08/public/login.html) e valida se os campos `#input-email`, `#input-password`, `#input-csrf-token` e `#button-submit` estão visíveis e funcionais.
+1. **Etapa 1:** Acessa [login.html](/public/login.html) e valida se os campos `#input-email`, `#input-password`, `#input-csrf-token` e `#button-submit` estão visíveis e funcionais.
 2. **Etapa 2:** Digita credenciais incorretas e valida a exibição do alerta de erro com proteção anti-enumeração (*"Credenciais inválidas."*).
-3. **Etapa 3:** Digita credenciais legítimas (`usuario@teste.com` / `Senha@123`) e valida o redirecionamento automático para [dashboard.html](file:///var/www/html/teste-software/Aula-08/public/dashboard.html), conferindo os dados da sessão na tela.
+3. **Etapa 3:** Digita credenciais legítimas (`usuario@teste.com` / `Senha@123`) e valida o redirecionamento automático para [dashboard.html](/public/dashboard.html), conferindo os dados da sessão na tela.
 4. **Etapa 4:** Aciona o botão de logout no Dashboard, valida a invalidação da sessão e o retorno para a tela de login com mensagem informativa.
-5. **Etapa 5:** Simula o acesso à tela técnica [resultado.html](file:///var/www/html/teste-software/Aula-08/public/resultado.html) simulando um bloqueio por *Rate Limiting* (HTTP 429).
+5. **Etapa 5:** Simula o acesso à tela técnica [resultado.html](/public/resultado.html) simulando um bloqueio por *Rate Limiting* (HTTP 429).
 
 ---
 
 ### 3. Resultado da Pipeline de Testes
 
-O script [executar_testes.sh](file:///var/www/html/teste-software/Aula-08/executar_testes.sh) rodou as três camadas de validação com sucesso:
+O script [executar_testes.sh](/executar_testes.sh) rodou as três camadas de validação com sucesso:
 
 ```text
 [1/3] Executando PHPUnit (Testes Unitários e de Integração)...
