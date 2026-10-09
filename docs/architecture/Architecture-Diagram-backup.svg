@@ -1,0 +1,2907 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   contentScriptType="application/ecmascript"
+   contentStyleType="text/css"
+   height="1636px"
+   preserveAspectRatio="none"
+   style="width:3221px;height:1636px;background:#FEFEFE;"
+   version="1.1"
+   viewBox="0 0 3221 1636"
+   width="3221px"
+   zoomAndPan="magnify"
+   id="svg210"
+   sodipodi:docname="Architecture-Diagram.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview210"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.1471593"
+     inkscape:cx="1343.3182"
+     inkscape:cy="750.9855"
+     inkscape:window-width="3840"
+     inkscape:window-height="2088"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg210" />
+  <defs
+     id="defs6">
+    <filter
+       height="1"
+       id="b1jxg4asun8hlj0"
+       width="1"
+       x="0"
+       y="0">
+      <feFlood
+         flood-color="#EEF2FF"
+         result="flood"
+         id="feFlood1" />
+      <feComposite
+         in="SourceGraphic"
+         in2="flood"
+         operator="over"
+         id="feComposite1" />
+    </filter>
+    <filter
+       height="1"
+       id="b1jxg4asun8hlj1"
+       width="1"
+       x="0"
+       y="0">
+      <feFlood
+         flood-color="#FFFBEB"
+         result="flood"
+         id="feFlood2" />
+      <feComposite
+         in="SourceGraphic"
+         in2="flood"
+         operator="over"
+         id="feComposite2" />
+    </filter>
+    <filter
+       height="1"
+       id="b1jxg4asun8hlj2"
+       width="1"
+       x="0"
+       y="0">
+      <feFlood
+         flood-color="#FDF2F8"
+         result="flood"
+         id="feFlood3" />
+      <feComposite
+         in="SourceGraphic"
+         in2="flood"
+         operator="over"
+         id="feComposite3" />
+    </filter>
+    <filter
+       height="1"
+       id="b1jxg4asun8hlj3"
+       width="1"
+       x="0"
+       y="0">
+      <feFlood
+         flood-color="#EFF6FF"
+         result="flood"
+         id="feFlood4" />
+      <feComposite
+         in="SourceGraphic"
+         in2="flood"
+         operator="over"
+         id="feComposite4" />
+    </filter>
+    <filter
+       height="1"
+       id="b1jxg4asun8hlj4"
+       width="1"
+       x="0"
+       y="0">
+      <feFlood
+         flood-color="#ECFDF5"
+         result="flood"
+         id="feFlood5" />
+      <feComposite
+         in="SourceGraphic"
+         in2="flood"
+         operator="over"
+         id="feComposite5" />
+    </filter>
+    <filter
+       height="1"
+       id="b1jxg4asun8hlj5"
+       width="1"
+       x="0"
+       y="0">
+      <feFlood
+         flood-color="#FAF5FF"
+         result="flood"
+         id="feFlood6" />
+      <feComposite
+         in="SourceGraphic"
+         in2="flood"
+         operator="over"
+         id="feComposite6" />
+    </filter>
+  </defs>
+  <path
+     d="m 1101,32.5 h 369.375 a 6,6 0 0 1 4,4 l 7,18.3441 H 1625 a 4,4 0 0 1 4,4 V 469.5 a 4,4 0 0 1 -4,4 h -524 a 4,4 0 0 1 -4,-4 v -433 a 4,4 0 0 1 4,-4"
+     fill="#eef2ff"
+     style="stroke:#6366f1;stroke-width:1.5"
+     id="path6" />
+  <line
+     style="stroke:#6366f1;stroke-width:1.5"
+     x1="1097"
+     x2="1481.375"
+     y1="54.844101"
+     y2="54.844101"
+     id="line6" />
+  <text
+     fill="#312e81"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="371.375"
+     x="1101"
+     y="47.328098"
+     id="text6">0. 🌐 Clients &amp; HTTP Delivery (Front Controller &amp; Slim PSR-7/15)</text>
+  <path
+     d="m 433,338.5 h 302.375 a 6,6 0 0 1 4,4 l 7,18.3441 H 1053 a 4,4 0 0 1 4,4 V 903 a 4,4 0 0 1 -4,4 H 433 a 4,4 0 0 1 -4,-4 V 342.5 a 4,4 0 0 1 4,-4"
+     fill="#fffbeb"
+     style="stroke:#f59e0b;stroke-width:1.5"
+     id="path7" />
+  <line
+     style="stroke:#f59e0b;stroke-width:1.5"
+     x1="429"
+     x2="746.375"
+     y1="360.84409"
+     y2="360.84409"
+     id="line7" />
+  <text
+     fill="#78350f"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="304.375"
+     x="433"
+     y="353.32809"
+     id="text7">1. 🛡️ Pipeline de Segurança &amp; Middlewares (PSR-15)</text>
+  <path
+     d="m 1481,537.5 h 292.375 a 6,6 0 0 1 4,4 l 7,18.3441 H 2422 a 4,4 0 0 1 4,4 V 927 a 4,4 0 0 1 -4,4 h -941 a 4,4 0 0 1 -4,-4 V 541.5 a 4,4 0 0 1 4,-4"
+     fill="#fdf2f8"
+     style="stroke:#ec4899;stroke-width:1.5"
+     id="path8" />
+  <line
+     style="stroke:#ec4899;stroke-width:1.5"
+     x1="1477"
+     x2="1784.375"
+     y1="559.84412"
+     y2="559.84412"
+     id="line8" />
+  <text
+     fill="#831843"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="294.375"
+     x="1481"
+     y="552.32812"
+     id="text8">2. 🎯 Camada de Apresentação HTTP (Padrão ADR)</text>
+  <path
+     d="m 1521,588.5 h 243 a 6,6 0 0 1 4,4 l 7,18.3441 h 615 a 4,4 0 0 1 4,4 V 703.5 a 4,4 0 0 1 -4,4 h -869 a 4,4 0 0 1 -4,-4 v -111 a 4,4 0 0 1 4,-4"
+     fill="#fff1f2"
+     style="stroke:#fb7185;stroke-width:1.5"
+     id="path9" />
+  <line
+     style="stroke:#fb7185;stroke-width:1.5"
+     x1="1517"
+     x2="1775"
+     y1="610.84412"
+     y2="610.84412"
+     id="line9" />
+  <text
+     fill="#9f1239"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="245"
+     x="1521"
+     y="603.32812"
+     id="text9">Action Controllers (Single Responsibility)</text>
+  <path
+     d="m 2160,780 h 102 a 6,6 0 0 1 4,4 l 7,18.3441 h 101 a 4,4 0 0 1 4,4 V 895 a 4,4 0 0 1 -4,4 h -214 a 4,4 0 0 1 -4,-4 V 784 a 4,4 0 0 1 4,-4"
+     fill="#fff1f2"
+     style="stroke:#fb7185;stroke-width:1.5"
+     id="path10" />
+  <line
+     style="stroke:#fb7185;stroke-width:1.5"
+     x1="2156"
+     x2="2273"
+     y1="802.34412"
+     y2="802.34412"
+     id="line10" />
+  <text
+     fill="#9f1239"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="104"
+     x="2160"
+     y="794.82812"
+     id="text10">Responders HTTP</text>
+  <path
+     d="m 1104,772 h 287 a 6,6 0 0 1 4,4 l 7,18.3441 h 31 a 4,4 0 0 1 4,4 V 1171.5 a 4,4 0 0 1 -4,4 h -329 a 4,4 0 0 1 -4,-4 V 776 a 4,4 0 0 1 4,-4"
+     fill="#eff6ff"
+     style="stroke:#3b82f6;stroke-width:1.5"
+     id="path11" />
+  <line
+     style="stroke:#3b82f6;stroke-width:1.5"
+     x1="1100"
+     x2="1402"
+     y1="794.34412"
+     y2="794.34412"
+     id="line11" />
+  <text
+     fill="#1e3a8a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="289"
+     x="1104"
+     y="786.82812"
+     id="text11">3. ⚙️ Camada de Aplicação (Casos de Uso &amp; DTOs)</text>
+  <path
+     d="m 34,995 h 307.375 a 6,6 0 0 1 4,4 l 7,18.3441 H 1056 a 4,4 0 0 1 4,4 V 1198 a 4,4 0 0 1 -4,4 H 34 a 4,4 0 0 1 -4,-4 V 999 a 4,4 0 0 1 4,-4"
+     fill="#ecfdf5"
+     style="stroke:#10b981;stroke-width:1.5"
+     id="path12" />
+  <line
+     style="stroke:#10b981;stroke-width:1.5"
+     x1="30"
+     x2="352.375"
+     y1="1017.3441"
+     y2="1017.3441"
+     id="line12" />
+  <text
+     fill="#064e3b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="309.375"
+     x="34"
+     y="1009.8281"
+     id="text12">4. 💎 Camada de Domínio (Regras de Negócio Puras)</text>
+  <path
+     d="m 335,1048.5 h 153 a 6,6 0 0 1 4,4 l 7,18.3441 h 265 a 4,4 0 0 1 4,4 V 1163.5 a 4,4 0 0 1 -4,4 H 335 a 4,4 0 0 1 -4,-4 v -111 a 4,4 0 0 1 4,-4"
+     fill="#f0fdf4"
+     style="stroke:#34d399;stroke-width:1.5"
+     id="path13" />
+  <line
+     style="stroke:#34d399;stroke-width:1.5"
+     x1="331"
+     x2="499"
+     y1="1070.8441"
+     y2="1070.8441"
+     id="line13" />
+  <text
+     fill="#065f46"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="155"
+     x="335"
+     y="1063.3281"
+     id="text13">Value Objects (Imutáveis)</text>
+  <path
+     d="m 66,1046 h 227 a 6,6 0 0 1 4,4 l 7,18.3441 h -1 a 4,4 0 0 1 4,4 V 1166 a 4,4 0 0 1 -4,4 H 66 a 4,4 0 0 1 -4,-4 v -116 a 4,4 0 0 1 4,-4"
+     fill="#f0fdf4"
+     style="stroke:#34d399;stroke-width:1.5"
+     id="path14" />
+  <line
+     style="stroke:#34d399;stroke-width:1.5"
+     x1="62"
+     x2="304"
+     y1="1068.3441"
+     y2="1068.3441"
+     id="line14" />
+  <text
+     fill="#065f46"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="229"
+     x="66"
+     y="1060.8281"
+     id="text14">Contratos de Repositório (Portas / DIP)</text>
+  <path
+     d="m 1441,1266 h 321.375 a 6,6 0 0 1 4,4 l 7,18.3441 H 2408 a 4,4 0 0 1 4,4 V 1397 a 4,4 0 0 1 -4,4 h -967 a 4,4 0 0 1 -4,-4 v -127 a 4,4 0 0 1 4,-4"
+     fill="#faf5ff"
+     style="stroke:#8b5cf6;stroke-width:1.5"
+     id="path15" />
+  <line
+     style="stroke:#8b5cf6;stroke-width:1.5"
+     x1="1437"
+     x2="1773.375"
+     y1="1288.3441"
+     y2="1288.3441"
+     id="line15" />
+  <text
+     fill="#4c1d95"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="323.375"
+     x="1441"
+     y="1280.8281"
+     id="text15">5. 🔌 Camada de Infraestrutura (Adaptadores Técnicos)</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#818cf8;stroke-width:1.5"
+     width="229"
+     x="1314.5"
+     y="94.5"
+     id="rect15" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#818cf8;stroke-width:1.5"
+     width="10"
+     x="1309.5"
+     y="99.5"
+     id="rect16" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#818cf8;stroke-width:1.5"
+     width="10"
+     x="1309.5"
+     y="133.1019"
+     id="rect17" />
+  <text
+     fill="#1e1b4b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="180"
+     x="1324.5"
+     y="116.2589"
+     id="text17">Single Page Interfaces (HTML/JS)</text>
+  <text
+     fill="#1e1b4b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="209"
+     x="1324.5"
+     y="130.17191"
+     id="text18">login.html / dashboard.html / resultado.html</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#818cf8;stroke-width:1.5"
+     width="212"
+     x="1323"
+     y="219.5"
+     id="rect18" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#818cf8;stroke-width:1.5"
+     width="10"
+     x="1318"
+     y="224.5"
+     id="rect19" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#818cf8;stroke-width:1.5"
+     width="10"
+     x="1318"
+     y="258.1019"
+     id="rect20" />
+  <text
+     fill="#1e1b4b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="92"
+     x="1333"
+     y="241.2589"
+     id="text20">public/index.php</text>
+  <text
+     fill="#1e1b4b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="192"
+     x="1333"
+     y="255.17191"
+     id="text21">Ponto Único de Entrada (Front Controller)</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#818cf8;stroke-width:1.5"
+     width="171"
+     x="1433.5"
+     y="400.5"
+     id="rect21" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#818cf8;stroke-width:1.5"
+     width="10"
+     x="1428.5"
+     y="405.5"
+     id="rect22" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#818cf8;stroke-width:1.5"
+     width="10"
+     x="1428.5"
+     y="439.1019"
+     id="rect23" />
+  <text
+     fill="#1e1b4b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="151"
+     x="1443.5"
+     y="422.25891"
+     id="text23">AppBootstrap &amp; routes.php</text>
+  <text
+     fill="#1e1b4b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="147"
+     x="1443.5"
+     y="436.17191"
+     id="text24">(Roteamento Slim Framework 4)</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#818cf8;stroke-width:1.5"
+     width="269"
+     x="1129.5"
+     y="400.5"
+     id="rect24" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#818cf8;stroke-width:1.5"
+     width="10"
+     x="1124.5"
+     y="405.5"
+     id="rect25" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#818cf8;stroke-width:1.5"
+     width="10"
+     x="1124.5"
+     y="439.1019"
+     id="rect26" />
+  <text
+     fill="#1e1b4b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="96"
+     x="1139.5"
+     y="422.25891"
+     id="text26">PHP-DI Container</text>
+  <text
+     fill="#1e1b4b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="249"
+     x="1139.5"
+     y="436.17191"
+     id="text27">(Injeção de Dependências PSR-11 / dependencies.php)</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#fbbf24;stroke-width:1.5"
+     width="244"
+     x="453"
+     y="400.5"
+     id="rect27" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#fbbf24;stroke-width:1.5"
+     width="10"
+     x="448"
+     y="405.5"
+     id="rect28" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#fbbf24;stroke-width:1.5"
+     width="10"
+     x="448"
+     y="439.1019"
+     id="rect29" />
+  <text
+     fill="#451a03"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="156"
+     x="463"
+     y="422.25891"
+     id="text29">SecurityHeadersMiddleware</text>
+  <text
+     fill="#451a03"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="224"
+     x="463"
+     y="436.17191"
+     id="text30">Cabeçalhos OWASP (CSP, HSTS, X-Frame-Options)</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#fbbf24;stroke-width:1.5"
+     width="237"
+     x="604.5"
+     y="642.5"
+     id="rect30" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#fbbf24;stroke-width:1.5"
+     width="10"
+     x="599.5"
+     y="647.5"
+     id="rect31" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#fbbf24;stroke-width:1.5"
+     width="10"
+     x="599.5"
+     y="681.10193"
+     id="rect32" />
+  <text
+     fill="#451a03"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="86"
+     x="614.5"
+     y="664.25891"
+     id="text32">CsrfMiddleware</text>
+  <text
+     fill="#451a03"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="217"
+     x="614.5"
+     y="678.17188"
+     id="text33">Validação de Token Anti-CSRF via Header/Body</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#fbbf24;stroke-width:1.5"
+     width="223"
+     x="765.5"
+     y="834"
+     id="rect33" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#fbbf24;stroke-width:1.5"
+     width="10"
+     x="760.5"
+     y="839"
+     id="rect34" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#fbbf24;stroke-width:1.5"
+     width="10"
+     x="760.5"
+     y="872.60193"
+     id="rect35" />
+  <text
+     fill="#451a03"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="119"
+     x="775.5"
+     y="855.75891"
+     id="text35">RateLimitMiddleware</text>
+  <text
+     fill="#451a03"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="203"
+     x="775.5"
+     y="869.67188"
+     id="text36">Mitigação de Brute Force (5 tentativas / 60s)</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#fbbf24;stroke-width:1.5"
+     width="281"
+     x="732.5"
+     y="400.5"
+     id="rect36" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#fbbf24;stroke-width:1.5"
+     width="10"
+     x="727.5"
+     y="405.5"
+     id="rect37" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#fbbf24;stroke-width:1.5"
+     width="10"
+     x="727.5"
+     y="439.1019"
+     id="rect38" />
+  <text
+     fill="#451a03"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="146"
+     x="742.5"
+     y="422.25891"
+     id="text38">CustomerAuthMiddleware</text>
+  <text
+     fill="#451a03"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="261"
+     x="742.5"
+     y="436.17191"
+     id="text39">Guarda de Rotas Privadas (Sessão Ativa /api/dashboard)</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="230"
+     x="2148"
+     y="642.5"
+     id="rect39" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="10"
+     x="2143"
+     y="647.5"
+     id="rect40" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="10"
+     x="2143"
+     y="681.10193"
+     id="rect41" />
+  <text
+     fill="#831843"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="91"
+     x="2158"
+     y="664.25891"
+     id="text41">CsrfTokenAction</text>
+  <text
+     fill="#831843"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="210"
+     x="2158"
+     y="678.17188"
+     id="text42">GET /api/csrf-token (Geração e sincronização)</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="160"
+     x="1752"
+     y="642.5"
+     id="rect42" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="10"
+     x="1747"
+     y="647.5"
+     id="rect43" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="10"
+     x="1747"
+     y="681.10193"
+     id="rect44" />
+  <text
+     fill="#831843"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="66"
+     x="1762"
+     y="664.25891"
+     id="text44">LoginAction</text>
+  <text
+     fill="#831843"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="140"
+     x="1762"
+     y="678.17188"
+     id="text45">POST /login &amp; POST /api/login</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="166"
+     x="1947"
+     y="642.5"
+     id="rect45" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="10"
+     x="1942"
+     y="647.5"
+     id="rect46" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="10"
+     x="1942"
+     y="681.10193"
+     id="rect47" />
+  <text
+     fill="#831843"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="75"
+     x="1957"
+     y="664.25891"
+     id="text47">LogoutAction</text>
+  <text
+     fill="#831843"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="146"
+     x="1957"
+     y="678.17188"
+     id="text48">POST /api/logout &amp; GET /logout</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="183"
+     x="1533.5"
+     y="642.5"
+     id="rect48" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="10"
+     x="1528.5"
+     y="647.5"
+     id="rect49" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="10"
+     x="1528.5"
+     y="681.10193"
+     id="rect50" />
+  <text
+     fill="#831843"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="96"
+     x="1543.5"
+     y="664.25891"
+     id="text50">DashboardAction</text>
+  <text
+     fill="#831843"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="163"
+     x="1543.5"
+     y="678.17188"
+     id="text51">GET /api/dashboard &amp; GET /api/me</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="190"
+     x="2172"
+     y="834"
+     id="rect51" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="10"
+     x="2167"
+     y="839"
+     id="rect52" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#f472b6;stroke-width:1.5"
+     width="10"
+     x="2167"
+     y="872.60193"
+     id="rect53" />
+  <text
+     fill="#831843"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="82"
+     x="2182"
+     y="855.75891"
+     id="text53">JsonResponder</text>
+  <text
+     fill="#831843"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="170"
+     x="2182"
+     y="869.67188"
+     id="text54">Respostas padronizadas JSON (PSR-7)</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#60a5fa;stroke-width:1.5"
+     width="238"
+     x="1159"
+     y="1102.5"
+     id="rect54" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#60a5fa;stroke-width:1.5"
+     width="10"
+     x="1154"
+     y="1107.5"
+     id="rect55" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#60a5fa;stroke-width:1.5"
+     width="10"
+     x="1154"
+     y="1141.1019"
+     id="rect56" />
+  <text
+     fill="#1e3a8a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="190"
+     x="1169"
+     y="1124.2589"
+     id="text56">LoginInputDTO &amp; LoginOutputDTO</text>
+  <text
+     fill="#1e3a8a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="218"
+     x="1169"
+     y="1138.1719"
+     id="text57">Contratos de entrada/saída tipados e imutáveis</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#60a5fa;stroke-width:1.5"
+     width="269"
+     x="1143.5"
+     y="834"
+     id="rect57" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#60a5fa;stroke-width:1.5"
+     width="10"
+     x="1138.5"
+     y="839"
+     id="rect58" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#60a5fa;stroke-width:1.5"
+     width="10"
+     x="1138.5"
+     y="872.60193"
+     id="rect59" />
+  <text
+     fill="#1e3a8a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="174"
+     x="1153.5"
+     y="855.75891"
+     id="text59">AuthenticateCustomerUseCase</text>
+  <text
+     fill="#1e3a8a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="249"
+     x="1153.5"
+     y="869.67188"
+     id="text60">Orquestra validação de credenciais, status e auditoria</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#10b981;stroke-width:1.5"
+     width="230"
+     x="787"
+     y="1102.5"
+     id="rect60" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#10b981;stroke-width:1.5"
+     width="10"
+     x="782"
+     y="1107.5"
+     id="rect61" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#10b981;stroke-width:1.5"
+     width="10"
+     x="782"
+     y="1141.1019"
+     id="rect62" />
+  <text
+     fill="#064e3b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="89"
+     x="797"
+     y="1124.2589"
+     id="text62">Customer Entity</text>
+  <text
+     fill="#064e3b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="210"
+     x="797"
+     y="1138.1719"
+     id="text63">ID, Nome, Email, Senha, Status (Ativo/Inativo)</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#10b981;stroke-width:1.5"
+     width="183"
+     x="568.5"
+     y="1102.5"
+     id="rect63" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#10b981;stroke-width:1.5"
+     width="10"
+     x="563.5"
+     y="1107.5"
+     id="rect64" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#10b981;stroke-width:1.5"
+     width="10"
+     x="563.5"
+     y="1141.1019"
+     id="rect65" />
+  <text
+     fill="#064e3b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="30"
+     x="578.5"
+     y="1124.2589"
+     id="text65">Email</text>
+  <text
+     fill="#064e3b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="163"
+     x="578.5"
+     y="1138.1719"
+     id="text66">Validação estrita RFC e formatação</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#10b981;stroke-width:1.5"
+     width="187"
+     x="346.5"
+     y="1102.5"
+     id="rect66" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#10b981;stroke-width:1.5"
+     width="10"
+     x="341.5"
+     y="1107.5"
+     id="rect67" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#10b981;stroke-width:1.5"
+     width="10"
+     x="341.5"
+     y="1141.1019"
+     id="rect68" />
+  <text
+     fill="#064e3b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="79"
+     x="356.5"
+     y="1124.2589"
+     id="text68">PasswordHash</text>
+  <text
+     fill="#064e3b"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="167"
+     x="356.5"
+     y="1138.1719"
+     id="text69">Verificação segura (password_verify)</text>
+  <circle
+     cx="206"
+     cy="1127"
+     fill="#fefefe"
+     style="stroke:#059669;stroke-width:2"
+     id="ellipse69"
+     r="8" />
+  <text
+     fill="#065f46"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="155"
+     x="128.5"
+     y="1155.7589"
+     id="text70">CustomerRepositoryInterface</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#a78bfa;stroke-width:1.5"
+     width="278"
+     x="1797"
+     y="1328"
+     id="rect70" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#a78bfa;stroke-width:1.5"
+     width="10"
+     x="1792"
+     y="1333"
+     id="rect71" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#a78bfa;stroke-width:1.5"
+     width="10"
+     x="1792"
+     y="1366.6019"
+     id="rect72" />
+  <text
+     fill="#4c1d95"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="170"
+     x="1807"
+     y="1349.7589"
+     id="text72">InMemoryCustomerRepository</text>
+  <text
+     fill="#4c1d95"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="258"
+     x="1807"
+     y="1363.6719"
+     id="text73">Implementação em memória com dados pré-populados</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#a78bfa;stroke-width:1.5"
+     width="278"
+     x="2110"
+     y="1328"
+     id="rect73" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#a78bfa;stroke-width:1.5"
+     width="10"
+     x="2105"
+     y="1333"
+     id="rect74" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#a78bfa;stroke-width:1.5"
+     width="10"
+     x="2105"
+     y="1366.6019"
+     id="rect75" />
+  <text
+     fill="#4c1d95"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="75"
+     x="2120"
+     y="1349.7589"
+     id="text75">SessionConfig</text>
+  <text
+     fill="#4c1d95"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="258"
+     x="2120"
+     y="1363.6719"
+     id="text76">Cookies HttpOnly, SameSite=Strict, session_regenerate_id</text>
+  <rect
+     fill="#fefefe"
+     height="48.601898"
+     rx="4"
+     ry="4"
+     style="stroke:#a78bfa;stroke-width:1.5"
+     width="281"
+     x="1480.5"
+     y="1328"
+     id="rect76" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#a78bfa;stroke-width:1.5"
+     width="10"
+     x="1475.5"
+     y="1333"
+     id="rect77" />
+  <rect
+     fill="#fefefe"
+     height="5"
+     style="stroke:#a78bfa;stroke-width:1.5"
+     width="10"
+     x="1475.5"
+     y="1366.6019"
+     id="rect78" />
+  <text
+     fill="#4c1d95"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="84"
+     x="1490.5"
+     y="1349.7589"
+     id="text78">SecurityLogger</text>
+  <text
+     fill="#4c1d95"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-style="italic"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="261"
+     x="1490.5"
+     y="1363.6719"
+     id="text79">Auditoria de acessos e mascaramento de dados sensíveis</text>
+  <g
+     id="g211"
+     transform="translate(-1096.6219,-312.94696)">
+    <path
+       d="m 2787.5,636 v 61.9276 a 4,4 0 0 0 4,4 h 405 a 4,4 0 0 0 4,-4 V 642 l -10,-10 h -399 a 4,4 0 0 0 -4,4"
+       fill="#fefce8"
+       style="stroke:#a80036;stroke-width:1"
+       id="path79" />
+    <path
+       d="m 3190.5,632 v 8 a 2,2 0 0 0 2,2 h 8 l -10,-10"
+       fill="#fefce8"
+       style="stroke:#a80036;stroke-width:1"
+       id="path80" />
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="237.3438"
+       x="2793.5"
+       y="648.75891"
+       id="text80">🎯 Padrão ADR (Action-Domain-Responder)</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="51"
+       x="2793.5"
+       y="663.74078"
+       id="text81">1. Action:</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="338"
+       x="2847.5"
+       y="663.74078"
+       id="text82">Recebe Request PSR-7, extrai credenciais e aciona o Caso de Uso.</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="126"
+       x="2793.5"
+       y="678.72272"
+       id="text83">2. Domain/Application:</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="232"
+       x="2922.5"
+       y="678.72272"
+       id="text84">Executa regras de negócio de forma isolada.</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="74"
+       x="2793.5"
+       y="693.70459"
+       id="text85">3. Responder:</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="276"
+       x="2870.5"
+       y="693.70459"
+       id="text86">Formata resposta JSON uniforme via JsonResponder.</text>
+  </g>
+  <g
+     id="g1"
+     transform="translate(-1866.3493,228.39025)">
+    <path
+       d="m 2786.5,1096 v 61.9276 a 4,4 0 0 0 4,4 h 317.3438 a 4,4 0 0 0 4,-4 V 1102 l -10,-10 H 2790.5 a 4,4 0 0 0 -4,4"
+       fill="#fefce8"
+       style="stroke:#a80036;stroke-width:1"
+       id="path86" />
+    <path
+       d="m 3101.8438,1092 v 8 a 2,2 0 0 0 2,2 h 8 l -10,-10"
+       fill="#fefce8"
+       style="stroke:#a80036;stroke-width:1"
+       id="path87" />
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="304.34381"
+       x="2792.5"
+       y="1108.7589"
+       id="text87">💎 Clean Architecture &amp; Inversão de Dependência (DIP)</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="9"
+       x="2792.5"
+       y="1123.7408"
+       id="text88">O</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="46"
+       x="2804.5"
+       y="1123.7408"
+       id="text89">Domínio</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="222"
+       x="2853.5"
+       y="1123.7408"
+       id="text90">não conhece HTTP, Frameworks ou Banco.</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="7"
+       x="2792.5"
+       y="1138.7227"
+       id="text91">A</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="80"
+       x="2802.5"
+       y="1138.7227"
+       id="text92">Infraestrutura</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="120"
+       x="2885.5"
+       y="1138.7227"
+       id="text93">implementa a interface</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-style="italic"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="139"
+       x="2792.5"
+       y="1153.7046"
+       id="text94">CustomerRepositoryInterface</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="104"
+       x="2934.5"
+       y="1153.7046"
+       id="text95">sem acoplar o Core.</text>
+  </g>
+  <g
+     id="g210"
+     transform="translate(-1229.9949,-176.08714)">
+    <path
+       d="m 1653.5,386.5 v 76.9094 a 4,4 0 0 0 4,4 h 351 a 4,4 0 0 0 4,-4 V 392.5 l -10,-10 h -345 a 4,4 0 0 0 -4,4"
+       fill="#fefce8"
+       style="stroke:#a80036;stroke-width:1"
+       id="path95" />
+    <path
+       d="m 2002.5,382.5 v 8 a 2,2 0 0 0 2,2 h 8 l -10,-10"
+       fill="#fefce8"
+       style="stroke:#a80036;stroke-width:1"
+       id="path96" />
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="177.3438"
+       x="1659.5"
+       y="399.25891"
+       id="text96">🛡️ Defesa em Camadas (OWASP)</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="4"
+       x="1659.5"
+       y="414.24081"
+       id="text97">•</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="94"
+       x="1666.5"
+       y="414.24081"
+       id="text98">SecurityHeaders:</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="223"
+       x="1763.5"
+       y="414.24081"
+       id="text99">Protege contra XSS, Clickjacking e Sniffing.</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="4"
+       x="1659.5"
+       y="429.22269"
+       id="text100">•</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="24"
+       x="1666.5"
+       y="429.22269"
+       id="text101">Csrf:</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="193"
+       x="1693.5"
+       y="429.22269"
+       id="text102">Evita requisições forjadas entre sites.</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="4"
+       x="1659.5"
+       y="444.20459"
+       id="text103">•</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="57"
+       x="1666.5"
+       y="444.20459"
+       id="text104">RateLimit:</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="271"
+       x="1726.5"
+       y="444.20459"
+       id="text105">Bloqueia ataques de força bruta / credenciais spray.</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="4"
+       x="1659.5"
+       y="459.18649"
+       id="text106">•</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="84"
+       x="1666.5"
+       y="459.18649"
+       id="text107">CustomerAuth:</text>
+    <text
+       fill="#713f12"
+       font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+       font-size="11px"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="239"
+       x="1753.5"
+       y="459.18649"
+       id="text108">Impede acesso sem sessão autenticada válida.</text>
+  </g>
+  <path
+     d="m 1892.1911,560.572 c -0.4719,-87.34239 1.3306,-85.26754 0.1582,-171.05975"
+     fill="none"
+     id="PresentationLayer-GMN35"
+     style="stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     sodipodi:nodetypes="cc" />
+  <path
+     d="m 1032.5711,1320.2703 c -36.81996,-40.09 -49.96128,-51.6578 -65.70708,-117.3523"
+     fill="none"
+     id="GMN38-DomainLayer"
+     style="stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     sodipodi:nodetypes="cc" />
+  <path
+     d="M 426.7941,372.80976 C 367.64024,341.07739 376.2783,291.46889 422.92111,256.73253"
+     fill="none"
+     id="MiddlewareLayer-GMN41"
+     style="stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     sodipodi:nodetypes="cc" />
+  <path
+     d="m 1429,143.72 c 0,20.16 0,49.17 0,70.63"
+     fill="none"
+     id="FrontendViews-&gt;Entrypoint"
+     style="stroke:#2563eb;stroke-width:2" />
+  <polygon
+     fill="#2563eb"
+     points="1429,214.36 1425,210.36 1429,219.36 1433,210.36 "
+     style="stroke:#2563eb;stroke-width:2"
+     id="polygon108" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="167"
+     x="1430"
+     y="186.2589"
+     id="text109"
+     transform="translate(4.3585926,-0.87171851)">1. Requisição HTTP (Fetch/Form)</text>
+  <path
+     d="m 1440.95,268.77 c 16.52,32.86 46.28,92.05 63.9,127.08"
+     fill="none"
+     id="Entrypoint-&gt;RouteDefinitions"
+     style="stroke:#2563eb;stroke-width:2" />
+  <polygon
+     fill="#2563eb"
+     points="1504.8868,395.9565 1499.5135,394.1881 1507.14,400.42 1506.6551,390.5831 "
+     style="stroke:#2563eb;stroke-width:2"
+     id="polygon109" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="138"
+     x="1464"
+     y="311.25891"
+     id="text110"
+     transform="translate(3.9227336)">2. Despacha para Slim App</text>
+  <path
+     d="m 1323.1556,241.13029 c -58.971,-0.1669 -60.8244,62.37708 -59.2756,154.10971"
+     fill="none"
+     id="Entrypoint-&gt;Container"
+     style="stroke:#7c3aed;stroke-width:1;stroke-dasharray:7, 7"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#7c3aed"
+     points="1263.8798,395.284 1260.0429,391.1273 1263.68,400.28 1268.0365,391.4471 "
+     style="stroke:#7c3aed;stroke-width:1"
+     id="polygon110" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="153"
+     x="1296"
+     y="311.25891"
+     id="text111">3. Inicializa Container PHP-DI</text>
+  <path
+     d="M 1502.7,400.47 C 1177.6388,288.75086 874.93265,314.91868 602.87,396.76"
+     fill="none"
+     id="RouteDefinitions-&gt;SecHeadersMW"
+     style="stroke:#2563eb;stroke-width:2"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#2563eb"
+     points="602.9313,391.2369 599.1,400.31 608.402,397.0739 602.7481,396.8908 "
+     style="stroke:#2563eb;stroke-width:2"
+     id="polygon111"
+     transform="rotate(13.012152,603.01703,396.42084)" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="179"
+     x="883.5"
+     y="311.25891"
+     id="text112"
+     transform="translate(20.341136,11.095165)">Pipeline Global (Adiciona Headers)</text>
+  <path
+     d="m 589.73,449.89 c 27.48,44.57 86.44,140.17 115.85,187.86"
+     fill="none"
+     id="SecHeadersMW-&gt;CsrfMW"
+     style="stroke:#2563eb;stroke-width:1" />
+  <polygon
+     fill="#2563eb"
+     points="705.7031,637.9556 700.1982,636.6536 708.33,642.21 707.0052,632.4507 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon112" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="121"
+     x="629"
+     y="510.25891"
+     id="text113"
+     transform="translate(17.259146,24.039525)">Valida Token Anti-CSRF</text>
+  <path
+     d="m 742.19,691.62 c 28.55,35.13 82.09,101.01 112.4,138.3"
+     fill="none"
+     id="CsrfMW-&gt;RateMW"
+     style="stroke:#2563eb;stroke-width:1" />
+  <polygon
+     fill="#2563eb"
+     points="854.65,830.0051 849.0222,829.4332 857.81,833.88 855.222,824.3773 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon113" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="192"
+     x="788"
+     y="744.75891"
+     id="text114"
+     transform="translate(-195.39819,10.478767)">Avalia contagem de tentativas por IP</text>
+  <path
+     d="M 919.45,833.93 C 961.98,811.17 1029.87,777.14 1092,756 c 47.37,-16.12 60.34,-17.87 110,-24 117.39,-14.5 417.14,11.75 532,-16.5 18.63,-4.58 37.88,-12.99 54.34,-21.48"
+     fill="none"
+     id="RateMW-&gt;LoginAction"
+     style="stroke:#2563eb;stroke-width:1" />
+  <polygon
+     fill="#2563eb"
+     points="1788.4786,693.9458 1786.7861,699.3435 1792.91,691.63 1783.0809,692.2533 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon114" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="161"
+     x="1203"
+     y="744.75891"
+     id="text115">Encaminha requisição validada</text>
+  <path
+     d="m 1373.1137,449.58 c 37.0793,71.75448 288.6705,37.50377 403.6005,79.76547 58.4975,20.44797 53.0771,54.55867 53.5795,106.42534"
+     fill="none"
+     id="Container-&gt;LoginAction"
+     style="stroke:#7c3aed;stroke-width:1;stroke-dasharray:7, 7"
+     sodipodi:nodetypes="ccc" />
+  <polygon
+     fill="#7c3aed"
+     points="1821.6013,637.8345 1816.3819,635.6532 1823.5,642.46 1823.7827,632.6152 "
+     style="stroke:#7c3aed;stroke-width:1"
+     id="polygon115"
+     transform="rotate(24.455734,1829.1731,657.2743)"
+     inkscape:transform-center-x="2.7662161"
+     inkscape:transform-center-y="2.3287349" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="287"
+     x="1713"
+     y="510.25891"
+     id="text116"
+     transform="translate(-684.29905,-25.279837)">Injeta AuthenticateCustomerUseCase &amp; SecurityLogger</text>
+  <path
+     d="m 1257.4,449.77 c -7.1883,208.33454 0.202,204.32573 35.13,379.41"
+     fill="none"
+     id="Container-&gt;AuthUseCase"
+     style="stroke:#7c3aed;stroke-width:1;stroke-dasharray:7, 7"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#7c3aed"
+     points="1292.4113,829.4113 1290.5334,824.0752 1290.25,833.92 1297.7474,827.5333 "
+     style="stroke:#7c3aed;stroke-width:1"
+     id="polygon116" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="188"
+     x="1280"
+     y="671.75891"
+     id="text117">Injeta CustomerRepositoryInterface</text>
+  <path
+     d="m 1307.78,449.57 c 79.8586,117.23978 147.0009,210.45415 147.6912,468.25517 -0.7102,240.22113 478.9012,167.34523 520.0288,407.12483"
+     fill="none"
+     id="Container-&gt;InMemoryRepo"
+     style="stroke:#7c3aed;stroke-width:1;stroke-dasharray:7, 7"
+     sodipodi:nodetypes="ccc" />
+  <polygon
+     fill="#7c3aed"
+     points="1975.3226,1325.0702 1976.3968,1319.5163 1971.18,1327.87 1980.8765,1326.1444 "
+     style="stroke:#7c3aed;stroke-width:1"
+     id="polygon117" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="177"
+     x="2509"
+     y="863.25891"
+     id="text118"
+     transform="translate(-1060.0097,100.24763)">Registra Singleton do Repositório</text>
+  <path
+     d="m 1822.8187,692.60172 c 0.8017,189.74471 -235.2217,374.65178 -425.9122,429.52128"
+     fill="none"
+     id="LoginAction-&gt;AppDTOs"
+     style="stroke:#2563eb;stroke-width:1"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#2563eb"
+     points="1342.8572,1100.3328 1344.8572,1095.0413 1338.3,1102.39 1348.1487,1102.3329 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon118" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="193"
+     x="1574"
+     y="863.25891"
+     id="text119">Monta LoginInputDTO (email, senha)</text>
+  <path
+     d="m 1808.0809,691.48207 c -0.302,91.41582 -267.2361,166.09615 -395.1489,165.91293"
+     fill="none"
+     id="LoginAction-&gt;AuthUseCase"
+     style="stroke:#2563eb;stroke-width:2"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#2563eb"
+     points="1295.1236,829.6632 1294.001,824.1188 1292.36,833.83 1300.6679,828.5405 "
+     style="stroke:#2563eb;stroke-width:2"
+     id="polygon119" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="171"
+     x="1399"
+     y="744.75891"
+     id="text120">Executa execute(LoginInputDTO)</text>
+  <path
+     d="m 1842.82,691.78 c 28.32,62 104.5,227.32 135.18,279.22 82.03,138.74 200.01,291.37 248.7,352.72"
+     fill="none"
+     id="LoginAction-&gt;SessionInfra"
+     style="stroke:#0284c7;stroke-width:1" />
+  <polygon
+     fill="#0284c7"
+     points="2226.9758,1324.0604 2221.3566,1323.408 2230.08,1327.98 2227.6281,1318.4412 "
+     style="stroke:#0284c7;stroke-width:1"
+     id="polygon120" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="222"
+     x="1979"
+     y="967.75891"
+     id="text121"
+     transform="translate(-59.276859,74.967792)">Regenera ID de sessão em caso de sucesso</text>
+  <path
+     d="m 1833.74,691.65 c 0.5394,300.32219 -212.2614,237.07757 -211.03,630.54"
+     fill="none"
+     id="LoginAction-&gt;LoggerInfra"
+     style="stroke:#7c3aed;stroke-width:1"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#7c3aed"
+     points="1622.6715,1322.5838 1618.9797,1318.2977 1622.3,1327.57 1626.9576,1318.892 "
+     style="stroke:#7c3aed;stroke-width:1"
+     id="polygon121" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="187"
+     x="1754"
+     y="967.75891"
+     id="text122">Registra login_success / login_failed</text>
+  <path
+     d="m 1874.92,691.69 c 85.3926,143.15399 216.2862,72.14502 347.8,139.75"
+     fill="none"
+     id="LoginAction-&gt;JsonResponder"
+     style="stroke:#2563eb;stroke-width:1"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#2563eb"
+     points="2222.7944,831.487 2217.3395,832.9851 2227.14,833.96 2221.2963,826.0321 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon122" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="271"
+     x="2048"
+     y="744.75891"
+     id="text123">Converte LoginOutputDTO em resposta JSON PSR-7</text>
+  <path
+     d="m 2310.89,833.98 c 80.85,-44.02 191.2077,-268.01253 113.4805,-403.08744 l -14.8192,-25.75291 C 2333.1097,272.29903 1838.7,124.07 1548.61,120.73"
+     fill="none"
+     id="JsonResponder-&gt;FrontendViews"
+     style="stroke:#2563eb;stroke-width:1"
+     sodipodi:nodetypes="cssc" />
+  <polygon
+     fill="#2563eb"
+     points="1548.5297,120.7271 1552.5751,116.7731 1543.53,120.67 1552.4837,124.7726 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon123" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="200"
+     x="2557"
+     y="429.75891"
+     id="text124"
+     transform="translate(-287.66712,-70.609202)">Retorna JSON {success, message, user}</text>
+  <path
+     d="m 1250.91,883.01 c 0.6795,165.4498 -579.13045,52.19764 -579.95,214.53"
+     fill="none"
+     id="AuthUseCase-&gt;EmailVO"
+     style="stroke:#2563eb;stroke-width:1"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#2563eb"
+     points="670.8903,1097.7018 668.756,1092.4631 668.95,1102.31 676.1291,1095.5675 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon124" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="184"
+     x="842"
+     y="967.75891"
+     id="text125"
+     transform="translate(-115.26644,44.380661)">Instancia e valida e-mail informado</text>
+  <path
+     d="M 1250.898,882.32567 C 1252.1259,1052.3755 206.79711,916.77529 206.53372,1111.0685"
+     fill="none"
+     id="AuthUseCase-&gt;CustomerRepoInterface"
+     style="stroke:#2563eb;stroke-width:1"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#2563eb"
+     points="218.5093,1112.1167 213.0414,1113.5665 211.5916,1108.0985 210.53,1117.89 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon125"
+     transform="rotate(-24.460878,206.31253,1127.5079)" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="145"
+     x="414"
+     y="967.75891"
+     id="text126"
+     transform="translate(-58.557816,43.147865)">Consulta findByEmail(email)</text>
+  <path
+     d="M 1251.0341,882.97104 C 1251.8828,1038.1967 917.13339,939.60374 917.69,1097.94"
+     fill="none"
+     id="AuthUseCase-&gt;CustomerEntity"
+     style="stroke:#2563eb;stroke-width:1"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#2563eb"
+     points="917.6757,1097.9725 916.2822,1092.49 915.12,1102.27 923.1582,1096.579 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon126" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="171"
+     x="1098"
+     y="967.75891"
+     id="text127"
+     transform="translate(-173.82426,45.613457)">Verifica status da conta (isAtivo())</text>
+  <path
+     d="m 1250.94,883.13 c -3.0001,163.4643 -795.04652,43.92296 -797.27,214.42"
+     fill="none"
+     id="AuthUseCase-&gt;PasswordHashVO"
+     style="stroke:#2563eb;stroke-width:1"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#2563eb"
+     points="453.5558,1097.7886 451.8633,1092.3909 451.24,1102.22 458.9535,1096.0961 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon127" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="155"
+     x="604"
+     y="967.75891"
+     id="text128"
+     transform="translate(-61.639807,42.531467)">Valida hash da senha (verify())</text>
+  <path
+     d="m 1278,883.15 c 0,48.89 0,160.96 0,214"
+     fill="none"
+     id="AuthUseCase-&gt;AppDTOs"
+     style="stroke:#2563eb;stroke-width:1" />
+  <polygon
+     fill="#2563eb"
+     points="1278,1097.4 1274,1093.4 1278,1102.4 1282,1093.4 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon128" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="230"
+     x="1279"
+     y="967.75891"
+     id="text129"
+     transform="translate(-106.02047,73.967769)">Retorna LoginOutputDTO para o Controller</text>
+  <path
+     d="M 1313.8141,118.88408 C 1048.3012,119.38874 864.97563,187.43816 866.42,395.46"
+     fill="none"
+     id="FrontendViews-&gt;AuthMW"
+     style="stroke:#2563eb;stroke-width:1"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#2563eb"
+     points="861.8041,392.3039 867.31,400.47 869.6819,390.911 866.4394,395.5464 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon129"
+     transform="rotate(7.0339716,865.77836,396.15335)" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="104"
+     x="1066"
+     y="248.7589"
+     id="text130"
+     transform="translate(-145.57699,-88.915288)">GET /api/dashboard</text>
+  <path
+     d="m 914.62,449.63 c 274.3034,161.47747 818.8674,503.89324 1218.1062,876.4639"
+     fill="none"
+     id="AuthMW-&gt;SessionInfra"
+     style="stroke:#0284c7;stroke-width:1"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#0284c7"
+     points="2393.2805,1344.4072 2396.8226,1339.9967 2388.31,1344.95 2397.691,1347.9494 "
+     style="stroke:#0284c7;stroke-width:1"
+     id="polygon130" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="236"
+     x="2735"
+     y="863.25891"
+     id="text131"
+     transform="translate(-992.88739,224.03166)">Valida flag de sessão ativa ($_SESSION['user'])</text>
+  <path
+     d="m 916.05,449.5 c 170.1414,94.25669 304.435,54.34478 624.4022,193.25031"
+     fill="none"
+     id="AuthMW-&gt;DashAction"
+     style="stroke:#2563eb;stroke-width:1"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#2563eb"
+     points="1615.5019,637.7431 1610.3458,635.416 1617.27,642.42 1617.829,632.587 "
+     style="stroke:#2563eb;stroke-width:1"
+     id="polygon131" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="154"
+     x="1354"
+     y="510.25891"
+     id="text132">Libera requisição autenticada</text>
+  <path
+     d="m 2033.08,691.78 c 125.5933,313.9621 106.6534,239.69438 223.52,631.09"
+     fill="none"
+     id="LogoutAction-&gt;SessionInfra"
+     style="stroke:#0284c7;stroke-width:1"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     fill="#0284c7"
+     points="2256.5658,1323.0226 2253.6285,1318.1881 2255.38,1327.88 2261.4003,1320.0854 "
+     style="stroke:#0284c7;stroke-width:1"
+     id="polygon132" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="211"
+     x="2224"
+     y="967.75891"
+     id="text133"
+     transform="translate(-118.55372,146.44871)">Destrói sessão e cookies de autenticação</text>
+  <path
+     d="m 228.01,1150.35 c 23.26,21.92 62.17,53.98 102.99,67.65 152.6,51.09 1294.16,-15.25 1448,32 51.04,15.68 101.31,53.12 130.73,77.88"
+     fill="none"
+     id="CustomerRepoInterface&lt;-InMemoryRepo"
+     style="stroke:#059669;stroke-width:2" />
+  <polygon
+     fill="none"
+     points="232.66,1145.1 222.82,1155.06 213.5,1136.04 "
+     style="stroke:#059669;stroke-width:2"
+     id="polygon133" />
+  <text
+     fill="#059669"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="27"
+     x="1725"
+     y="1238.7589"
+     id="text134">[DIP]</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="11px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="113"
+     x="1755"
+     y="1238.7589"
+     id="text135">Implementa Contrato</text>
+  <rect
+     fill="#f8fafc"
+     height="182.88811"
+     rx="5"
+     ry="5"
+     style="stroke:#000000;stroke-width:1"
+     width="577"
+     x="2633"
+     y="1443"
+     id="rect135" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2642"
+     y="1463.4141"
+     id="text136" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="148"
+     x="2642"
+     y="1462.8281"
+     id="text137">CAMADA ARQUITETURAL</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2793"
+     y="1463.4141"
+     id="text138" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2796"
+     y="1463.4141"
+     id="text139" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="246"
+     x="2796"
+     y="1462.8281"
+     id="text140">COMPONENTES PRESENTES NO PROJETO</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="3045"
+     y="1463.4141"
+     id="text141" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2642"
+     y="1477.0341"
+     id="text142" />
+  <text
+     fill="#312e81"
+     filter="url(#b1jxg4asun8hlj0)"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="112"
+     x="2645"
+     y="1477.0341"
+     id="text143">0. Entrega &amp; Frontend</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2763"
+     y="1477.0341"
+     id="text144" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="336"
+     x="2796"
+     y="1477.0341"
+     id="text145">Telas HTML/JS (public/), Front Controller (index.php), Container PHP-DI</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2642"
+     y="1490.6541"
+     id="text146" />
+  <text
+     fill="#78350f"
+     filter="url(#b1jxg4asun8hlj1)"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="113"
+     x="2645"
+     y="1490.6541"
+     id="text147">1. Middlewares PSR-15</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2764"
+     y="1490.6541"
+     id="text148" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="342"
+     x="2796"
+     y="1490.6541"
+     id="text149">SecurityHeaders, CsrfMiddleware, RateLimitMiddleware, CustomerAuth</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2642"
+     y="1504.274"
+     id="text150" />
+  <text
+     fill="#831843"
+     filter="url(#b1jxg4asun8hlj2)"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="111"
+     x="2645"
+     y="1504.274"
+     id="text151">2. Apresentação (ADR)</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2762"
+     y="1504.274"
+     id="text152" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="373"
+     x="2796"
+     y="1504.274"
+     id="text153">LoginAction, LogoutAction, CsrfTokenAction, DashboardAction, JsonResponder</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2642"
+     y="1517.894"
+     id="text154" />
+  <text
+     fill="#1e3a8a"
+     filter="url(#b1jxg4asun8hlj3)"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="59"
+     x="2645"
+     y="1517.894"
+     id="text155">3. Aplicação</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2710"
+     y="1517.894"
+     id="text156" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="314"
+     x="2796"
+     y="1517.894"
+     id="text157">AuthenticateCustomerUseCase, LoginInputDTO, LoginOutputDTO</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2642"
+     y="1531.5142"
+     id="text158" />
+  <text
+     fill="#064e3b"
+     filter="url(#b1jxg4asun8hlj4)"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="81"
+     x="2645"
+     y="1531.5142"
+     id="text159">4. Domínio Puro</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2732"
+     y="1531.5142"
+     id="text160" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="366"
+     x="2796"
+     y="1531.5142"
+     id="text161">Customer Entity, Email VO, PasswordHash VO, CustomerRepositoryInterface</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2642"
+     y="1545.134"
+     id="text162" />
+  <text
+     fill="#4c1d95"
+     filter="url(#b1jxg4asun8hlj5)"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="87"
+     x="2645"
+     y="1545.134"
+     id="text163">5. Infraestrutura</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2738"
+     y="1545.134"
+     id="text164" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="294"
+     x="2796"
+     y="1545.134"
+     id="text165">InMemoryCustomerRepository, SessionConfig, SecurityLogger</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2642"
+     y="1561.4781"
+     id="text166" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="113"
+     x="2642"
+     y="1560.8921"
+     id="text167">TIPO DE CONEXÃO</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2758"
+     y="1561.4781"
+     id="text168" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2796"
+     y="1561.4781"
+     id="text169" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="12px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="83"
+     x="2796"
+     y="1560.8921"
+     id="text170">SIGNIFICADO</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2882"
+     y="1561.4781"
+     id="text171" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2642"
+     y="1575.0981"
+     id="text172" />
+  <text
+     fill="#2563eb"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="54"
+     x="2642"
+     y="1575.0981"
+     id="text173">────────&gt;</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="58"
+     x="2699"
+     y="1575.0981"
+     id="text174">(Azul Sólido)</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2796"
+     y="1575.0981"
+     id="text175" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="166"
+     x="2796"
+     y="1575.0981"
+     id="text176">Fluxo Direto / Chamada Síncrona</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="224"
+     x="2965"
+     y="1575.0981"
+     id="text177">(Requisições HTTP, Execução de Casos de Uso)</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2642"
+     y="1588.7181"
+     id="text178" />
+  <text
+     fill="#059669"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="38"
+     x="2642"
+     y="1588.7181"
+     id="text179">- - - - - ▷</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="85"
+     x="2683"
+     y="1588.7181"
+     id="text180">(Verde Tracejado)</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2796"
+     y="1588.7181"
+     id="text181" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="154"
+     x="2796"
+     y="1588.7181"
+     id="text182">Inversão de Dependência [DIP]</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="248"
+     x="2953"
+     y="1588.7181"
+     id="text183">(Implementação concreta de contratos do Domínio)</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2642"
+     y="1602.3381"
+     id="text184" />
+  <text
+     fill="#7c3aed"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="36"
+     x="2642"
+     y="1602.3381"
+     id="text185">· · · · · &gt;</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="84"
+     x="2681"
+     y="1602.3381"
+     id="text186">(Roxo Pontilhado)</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2796"
+     y="1602.3381"
+     id="text187" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="145"
+     x="2796"
+     y="1602.3381"
+     id="text188">Injeção de Dependências [DI]</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="157"
+     x="2944"
+     y="1602.3381"
+     id="text189">(Resolução via Container PSR-11)</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2642"
+     y="1615.9581"
+     id="text190" />
+  <text
+     fill="#0284c7"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="54"
+     x="2642"
+     y="1615.9581"
+     id="text191">────────&gt;</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="70"
+     x="2699"
+     y="1615.9581"
+     id="text192">(Azul Petróleo)</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="0"
+     x="2796"
+     y="1615.9581"
+     id="text193" />
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     font-weight="bold"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="159"
+     x="2796"
+     y="1615.9581"
+     id="text194">Manipulação de Sessão / Estado</text>
+  <text
+     fill="#0f172a"
+     font-family="Inter, 'Segoe UI', 'Helvetica Neue', sans-serif"
+     font-size="10px"
+     lengthAdjust="spacingAndGlyphs"
+     textLength="163"
+     x="2958"
+     y="1615.9581"
+     id="text195">(Regeneração, cookies, validação)</text>
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1450"
+     y2="1450"
+     id="line195" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1466.3441"
+     y2="1466.3441"
+     id="line196" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1479.9641"
+     y2="1479.9641"
+     id="line197" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1493.5841"
+     y2="1493.5841"
+     id="line198" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1507.2041"
+     y2="1507.2041"
+     id="line199" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1520.8241"
+     y2="1520.8241"
+     id="line200" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1534.4441"
+     y2="1534.4441"
+     id="line201" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1548.064"
+     y2="1548.064"
+     id="line202" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1564.4082"
+     y2="1564.4082"
+     id="line203" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1578.0281"
+     y2="1578.0281"
+     id="line204" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1591.6481"
+     y2="1591.6481"
+     id="line205" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1605.2681"
+     y2="1605.2681"
+     id="line206" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="3204"
+     y1="1618.8881"
+     y2="1618.8881"
+     id="line207" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2639"
+     x2="2639"
+     y1="1450"
+     y2="1618.8881"
+     id="line208" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="2793"
+     x2="2793"
+     y1="1450"
+     y2="1618.8881"
+     id="line209" />
+  <line
+     style="stroke:#0f172a;stroke-width:1"
+     x1="3204"
+     x2="3204"
+     y1="1450"
+     y2="1618.8881"
+     id="line210" />
+</svg>

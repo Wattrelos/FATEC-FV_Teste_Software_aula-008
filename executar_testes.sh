@@ -45,5 +45,7 @@ TEST_BASE_URL="http://127.0.0.1:8088" .venv/bin/python test_playwright_telas.py
 echo ""
 echo "=========================================================="
 echo " Todos os testes foram concluídos com sucesso! [PASS]"
+echo " Relatório visual com vídeo gerado:"
+echo " file://$(pwd)/test-results/relatorio_execucao.html"
 echo "=========================================================="
 

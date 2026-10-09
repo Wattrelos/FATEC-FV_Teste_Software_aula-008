@@ -1,0 +1,161 @@
+flowchart TD
+    %% ==============================================================================
+    %% 🎨 DEFINIÇÃO DE PALETAS DE CORES & ESTILOS (Aparência do Diagrama)
+    %% ==============================================================================
+    classDef delivery fill:#EEF2FF,stroke:#6366F1,stroke-width:2px,color:#312E81;
+    classDef deliveryComp fill:#FEFEFE,stroke:#818CF8,stroke-width:1.5px,color:#1E1B4B;
+    
+    classDef middleware fill:#FFFBEB,stroke:#F59E0B,stroke-width:2px,color:#78350F;
+    classDef middlewareComp fill:#FEFEFE,stroke:#FBBF24,stroke-width:1.5px,color:#451A03;
+    
+    classDef presentation fill:#FDF2F8,stroke:#EC4899,stroke-width:2px,color:#831843;
+    classDef presentationSub fill:#FFF1F2,stroke:#FB7185,stroke-width:1.5px,color:#9F1239;
+    classDef presentationComp fill:#FEFEFE,stroke:#F472B6,stroke-width:1.5px,color:#831843;
+    
+    classDef application fill:#EFF6FF,stroke:#3B82F6,stroke-width:2px,color:#1E3A8A;
+    classDef applicationComp fill:#FEFEFE,stroke:#60A5FA,stroke-width:1.5px,color:#1E3A8A;
+    
+    classDef domain fill:#ECFDF5,stroke:#10B981,stroke-width:2px,color:#064E3B;
+    classDef domainSub fill:#F0FDF4,stroke:#34D399,stroke-width:1.5px,color:#065F46;
+    classDef domainComp fill:#FEFEFE,stroke:#10B981,stroke-width:1.5px,color:#064E3B;
+    classDef domainContract fill:#FEFEFE,stroke:#059669,stroke-width:2px,stroke-dasharray: 5 5,color:#065F46;
+    
+    classDef infra fill:#FAF5FF,stroke:#8B5CF6,stroke-width:2px,color:#4C1D95;
+    classDef infraComp fill:#FEFEFE,stroke:#A78BFA,stroke-width:1.5px,color:#4C1D95;
+
+    classDef notes fill:#FEFCE8,stroke:#EAB308,stroke-width:1.2px,color:#713F12;
+    classDef legendStyle fill:#F8FAFC,stroke:#CBD5E1,stroke-width:1.2px,color:#0F172A;
+
+    %% ==============================================================================
+    %% 0. CLIENTS, FRONT CONTROLLER & BOOTSTRAP
+    %% ==============================================================================
+    subgraph DeliveryLayer["0. 🌐 Clients & HTTP Delivery (Front Controller & Slim PSR-7/15)"]
+        FrontendViews["<b>Single Page Interfaces (HTML/JS)</b><br><small><i>login.html / dashboard.html / resultado.html</i></small>"]
+        Entrypoint["<b>public/index.php</b><br><small><i>Ponto Único de Entrada (Front Controller)</i></small>"]
+        RouteDefinitions["<b>AppBootstrap & routes.php</b><br><small><i>(Roteamento Slim Framework 4)</i></small>"]
+        Container["<b>PHP-DI Container</b><br><small><i>(Injeção de Dependências PSR-11 / dependencies.php)</i></small>"]
+    end
+    class DeliveryLayer delivery;
+    class FrontendViews,Entrypoint,RouteDefinitions,Container deliveryComp;
+
+    %% ==============================================================================
+    %% 1. MIDDLEWARE PIPELINE
+    %% ==============================================================================
+    subgraph MiddlewareLayer["1. 🛡️ Pipeline de Segurança & Middlewares (PSR-15)"]
+        SecHeadersMW["<b>SecurityHeadersMiddleware</b><br><small><i>Cabeçalhos OWASP (CSP, HSTS, X-Frame-Options)</i></small>"]
+        CsrfMW["<b>CsrfMiddleware</b><br><small><i>Validação de Token Anti-CSRF via Header/Body</i></small>"]
+        RateMW["<b>RateLimitMiddleware</b><br><small><i>Mitigação de Brute Force (5 tentativas / 60s)</i></small>"]
+        AuthMW["<b>CustomerAuthMiddleware</b><br><small><i>Guarda de Rotas Privadas (Sessão Ativa /api/dashboard)</i></small>"]
+    end
+    class MiddlewareLayer middleware;
+    class SecHeadersMW,CsrfMW,RateMW,AuthMW middlewareComp;
+
+    %% ==============================================================================
+    %% 2. PRESENTATION LAYER (ADR - Action Controllers & Responders)
+    %% ==============================================================================
+    subgraph PresentationLayer["2. 🎯 Camada de Apresentação HTTP (Padrão ADR)"]
+        subgraph ActionControllers["Action Controllers (Single Responsibility)"]
+            CsrfAction["<b>CsrfTokenAction</b><br><small><i>GET /api/csrf-token (Geração e sincronização)</i></small>"]
+            LoginAction["<b>LoginAction</b><br><small><i>POST /login & POST /api/login</i></small>"]
+            LogoutAction["<b>LogoutAction</b><br><small><i>POST /api/logout & GET /logout</i></small>"]
+            DashAction["<b>DashboardAction</b><br><small><i>GET /api/dashboard & GET /api/me</i></small>"]
+        end
+        subgraph Responders["Responders HTTP"]
+            JsonResponder["<b>JsonResponder</b><br><small><i>Respostas padronizadas JSON (PSR-7)</i></small>"]
+        end
+    end
+    class PresentationLayer presentation;
+    class ActionControllers,Responders presentationSub;
+    class CsrfAction,LoginAction,LogoutAction,DashAction,JsonResponder presentationComp;
+
+    %% ==============================================================================
+    %% 3. APPLICATION LAYER (Use Cases & DTOs)
+    %% ==============================================================================
+    subgraph ApplicationLayer["3. ⚙️ Camada de Aplicação (Casos de Uso & DTOs)"]
+        AppDTOs["<b>LoginInputDTO & LoginOutputDTO</b><br><small><i>Contratos de entrada/saída tipados e imutáveis</i></small>"]
+        AuthUseCase["<b>AuthenticateCustomerUseCase</b><br><small><i>Orquestra validação de credenciais, status e auditoria</i></small>"]
+    end
+    class ApplicationLayer application;
+    class AppDTOs,AuthUseCase applicationComp;
+
+    %% ==============================================================================
+    %% 4. DOMAIN LAYER (Pure Business Logic)
+    %% ==============================================================================
+    subgraph DomainLayer["4. 💎 Camada de Domínio (Regras de Negócio Puras)"]
+        CustomerEntity["<b>Customer Entity</b><br><small><i>ID, Nome, Email, Senha, Status (Ativo/Inativo)</i></small>"]
+        
+        subgraph DomainVOs["Value Objects (Imutáveis)"]
+            EmailVO["<b>Email</b><br><small><i>Validação estrita RFC e formatação</i></small>"]
+            PasswordHashVO["<b>PasswordHash</b><br><small><i>Verificação segura (password_verify)</i></small>"]
+        end
+
+        subgraph DomainContracts["Contratos de Repositório (Portas / DIP)"]
+            CustomerRepoInterface["«interface»<br><b>CustomerRepositoryInterface</b>"]
+        end
+    end
+    class DomainLayer domain;
+    class DomainVOs,DomainContracts domainSub;
+    class CustomerEntity,EmailVO,PasswordHashVO domainComp;
+    class CustomerRepoInterface domainContract;
+
+    %% ==============================================================================
+    %% 5. INFRASTRUCTURE & PERSISTENCE
+    %% ==============================================================================
+    subgraph InfraLayer["5. 🔌 Camada de Infraestrutura (Adaptadores Técnicos)"]
+        InMemoryRepo["<b>InMemoryCustomerRepository</b><br><small><i>Implementação em memória com dados pré-populados</i></small>"]
+        SessionInfra["<b>SessionConfig</b><br><small><i>Cookies HttpOnly, SameSite=Strict, session_regenerate_id</i></small>"]
+        LoggerInfra["<b>SecurityLogger</b><br><small><i>Auditoria de acessos e mascaramento de dados sensíveis</i></small>"]
+    end
+    class InfraLayer infra;
+    class InMemoryRepo,SessionInfra,LoggerInfra infraComp;
+
+    %% ==============================================================================
+    %% 📝 NOTAS DIDÁTICAS DE ARQUITETURA
+    %% ==============================================================================
+    NoteADR["<b>🎯 Padrão ADR (Action-Domain-Responder)</b><br><b>1. Action:</b> Recebe Request PSR-7, extrai credenciais e aciona o Caso de Uso.<br><b>2. Domain/Application:</b> Executa regras de negócio de forma isolada.<br><b>3. Responder:</b> Formata resposta JSON uniforme via JsonResponder."]
+    NoteClean["<b>💎 Clean Architecture & Inversão de Dependência (DIP)</b><br>O <b>Domínio</b> não conhece HTTP, Frameworks ou Banco.<br>A <b>Infraestrutura</b> implementa a interface <i>CustomerRepositoryInterface</i> sem acoplar o Core."]
+    NoteOWASP["<b>🛡️ Defesa em Camadas (OWASP)</b><br>• <b>SecurityHeaders:</b> Protege contra XSS, Clickjacking e Sniffing.<br>• <b>Csrf:</b> Evita requisições forjadas entre sites.<br>• <b>RateLimit:</b> Bloqueia ataques de força bruta / credenciais spray.<br>• <b>CustomerAuth:</b> Impede acesso sem sessão autenticada válida."]
+    
+    class NoteADR,NoteClean,NoteOWASP notes;
+
+    %% Associação visual das notas às camadas
+    PresentationLayer -.-> NoteADR
+    DomainLayer -.-> NoteClean
+    MiddlewareLayer -.-> NoteOWASP
+
+    %% ==============================================================================
+    %% ↕️ HIERARQUIA VERTICAL DAS CAMADAS (Links Invisíveis para Layout)
+    %% ==============================================================================
+    DeliveryLayer ~~~ MiddlewareLayer
+    MiddlewareLayer ~~~ PresentationLayer
+    PresentationLayer ~~~ ApplicationLayer
+    ApplicationLayer ~~~ DomainLayer
+    DomainLayer ~~~ InfraLayer
+
+    %% ==============================================================================
+    %% 🔗 RELACIONAMENTOS E FLUXO DE EXECUÇÃO
+    %% ==============================================================================
+
+    %% --- 1. REQUISIÇÃO E DISPATCH ---
+    FrontendViews == "1. Requisição HTTP (Fetch/Form)" ==> Entrypoint
+    Entrypoint == "2. Despacha para Slim App" ==> RouteDefinitions
+    Entrypoint -. "3. Inicializa Container PHP-DI" .-> Container
+
+    %% --- 2. PIPELINE DE MIDDLEWARES ---
+    RouteDefinitions == "Pipeline Global (Adiciona Headers)" ==> SecHeadersMW
+    SecHeadersMW --> CsrfMW
+    CsrfMW --> RateMW
+    RateMW --> LoginAction
+
+    %% --- 3. INJEÇÃO DE DEPENDÊNCIAS ---
+    Container -. "Injeta AuthenticateCustomerUseCase & SecurityLogger" .-> LoginAction
+    Container -. "Injeta CustomerRepositoryInterface" .-> AuthUseCase
+    Container -. "Registra Singleton do Repositório" .-> InMemoryRepo
+
+%% --- 4. CAMADA DE APRESENTAÇÃO PARA APLICAÇÃO ---
+LoginAction --> AppDTOs
+LoginAction == "Executa execute(LoginInputDTO)" ==> AuthUseCase
+LoginAction --> SessionInfra
+LoginAction --> LoggerInfra
+LoginAction --> JsonResponder
+JsonResponder --> FrontendViews
