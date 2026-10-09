@@ -145,7 +145,7 @@ O mapa de pastas [file_structure_diagram.puml](/docs/architecture/file_structure
 
 # Diagrama de Arquitetura
 
-O diagrama de arquitetura [PlantUML](/docs/architecture/Architecture-Diagram.puml) e [SVG](/docs/architecture/Architecture-Diagram.svg) foi adaptado para representar exclusivamente os componentes e fluxos do projeto:
+O diagrama de arquitetura [PlantUML](/docs/architecture/Architecture-Diagram.puml) e [SVG](/docs/architecture/Architecture-Diagram-backup.svg) foi adaptado para representar exclusivamente os componentes e fluxos do projeto:
 
 ### O que foi sintetizado e alinhado ao código real:
 
